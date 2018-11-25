@@ -17,7 +17,11 @@ On November 30th till December 12th 2015, the Climate Summit took place in Paris
 
 ### Prerequisites
 Data Sources
-Link, Link, Link, Link, Link
+https://data.worldbank.org/indicator/EN.ATM.CO2E.KT?view=map, 
+https://www.eea.europa.eu/data-and-maps/daviz/ghg-emissions-by-sector-in#tab-chart_1, 
+https://www.eea.europa.eu/data-and-maps/data/national-emissions-reported-to-the-unfccc-and-to-the-eu-greenhouse-gas-monitoring-mechanism-14, 
+https://data.worldbank.org/indicator/EN.CO2.TRAN.ZS, 
+https://www.carbonbrief.org/paris-2015-tracking-country-climate-pledges
 External Components
 D3 Library, another libraries might follow
 Similar
