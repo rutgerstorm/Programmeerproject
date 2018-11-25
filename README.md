@@ -27,8 +27,12 @@ https://www.carbonbrief.org/paris-2015-tracking-country-climate-pledges
 
 External Components
 D3 Library, another libraries might follow
+
+
 Similar
 There is visualization that uses all three subjects that I got
+
+
 Challenges
 It will be hard to parse through all the given data, it is data from every country, for different sectors for a period of more than 40 years. Thereby it might be hard to make the circle diagram for every country due the lack of data.
 
