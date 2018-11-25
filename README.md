@@ -4,6 +4,8 @@ Description for project
 Rutger Storm
 12444049
 
+## I was not able to put the sketch and the three images in the readme, they can be found in the folder 'images'.
+
 ## What are the differences between countries in CO2 emission and how are these built up?
 
 On November 30th till December 12th 2015, the Climate Summit took place in Paris. The results were promising, 195 countries signed the “Agreement of Paris”. The Netherlands signed the agreement as well, which means they have to reduce their CO2-emission before 2030 with 49%. Almost all the countries will have to reduce their CO2-emission strongly in order to reach the agreement. But first things first, what does the actual CO2 in all the countries look like through different sectors?
