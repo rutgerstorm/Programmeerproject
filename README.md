@@ -32,7 +32,7 @@ D3 Library, another libraries might follow
 
 
 Similar
-There is visualization that uses all three subjects that I got
+There is no visualization that uses all three subjects that I got
 
 
 Challenges
