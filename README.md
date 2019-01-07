@@ -16,12 +16,11 @@ On November 30th till December 12th 2015, the Climate Summit took place in Paris
 
 2.	Barchart which visualises the total emission per region. Divided in Africa, Developing America, Centrally planned Asia,             Centrally planned Europe, Far East, Middle East, North America, Oceania & Western Europe. The barchart below contains different regions but the unit on the x-axis is in years and the barchart is more like a stacked chart rather than a barchart. In my barchart, every region has it's own bar (x-axis) and the y-axis shows the amount of CO2 emission. 
 
-![Figure 1](/Images/barchart.png "Barchart")
+![Figure 2](/Images/barchart.png "Barchart")
 
 3.	Circle diagram for every country which visualises the share of each production sector in the nationaal CO2 emission. My pie chart contains the following sectors: Transport,Forestry,Energy,Other sources,"Agriculture, Land Use & Forestry",Waste,Residential & commercial,Industry & Agriculture.
 
-![Figure 1](/Images/circlediagram.png =100x)
----
+![Figure 3](/Images/circlediagram.png =100x)
 
 ## Sketch  
 The website contains of two tabs, the first tab is the homepage which tells you the story about the Paris Agreement and gives the references. As is shown in the sketches below. When the users clicks on a random country, the barchart will zoom in to the region in which region this country belongs and shows how this region is built up. At the same time the piechart shows how the total emission of this random country is divided in the different sectors. When the users clicks on another country inside a region, the piechart shows the total emission divided in the different sectors of this country.  
