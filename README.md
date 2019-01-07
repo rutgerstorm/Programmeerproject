@@ -39,15 +39,15 @@ Data Sources
 
 
 
-External Components
+### External Components  
 D3 Library, another libraries might follow
 
 
-Similar
+### Similar  
 There is no visualization that uses all three subjects that I got
 
 
-Challenges
+### Challenges  
 It will be hard to parse through all the given data, it is data from every country, for different sectors for a period of almost 30 years. But after a long time of searching data, I've found all the data needed for the visualizations I wanted.
 
 
