@@ -12,6 +12,8 @@ On November 30th till December 12th 2015, the Climate Summit took place in Paris
 
 
 1.	Interactive world map with the CO2 emission per country and the possibility to change the year. 
+![Figure 1](/Images/1. Interactive world map.png "Worldmap")
+
 
 2.	Barchart which visualises the total emission per region. Divided in Africa, Developing America, Centrally planned Asia,             Centrally planned Europe, Far East, Middle East, North America, Oceania & Western Europe. 
 
