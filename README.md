@@ -21,6 +21,11 @@ On November 30th till December 12th 2015, the Climate Summit took place in Paris
 3.	Circle diagram for every country which visualises the share of each production sector in the nationaal CO2 emission. My pie chart contains the following sectors: Transport,Forestry,Energy,Other sources,"Agriculture, Land Use & Forestry",Waste,Residential & commercial,Industry & Agriculture.
 
 ![Figure 1](/Images/circlediagram.png "Piechart")
+
+## Sketch  
+The website contains of two tabs, the first tab is the homepage which tells you the story about the Paris Agreement and gives the references.
+
+
 ### Prerequisites
 Data Sources
 
