@@ -18,8 +18,11 @@ On November 30th till December 12th 2015, the Climate Summit took place in Paris
 
 2.	Barchart which visualises the total emission per region. Divided in Africa, Developing America, Centrally planned Asia,             Centrally planned Europe, Far East, Middle East, North America, Oceania & Western Europe. 
 
+![Figure 1](/Images/barchart.png "Barchart")
+
 3.	Circle diagram for every country which visualises the share of each production sector in the nationaal CO2 emission.
 
+![Figure 1](/Images/circlediagram.png "Piechart")
 ### Prerequisites
 Data Sources
 
