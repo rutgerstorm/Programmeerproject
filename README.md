@@ -13,17 +13,12 @@ On November 30th till December 12th 2015, the Climate Summit took place in Paris
 
 1.	Interactive world map with the CO2 emission per country and the possibility to change the year. 
 
-2.	Barchart which visualises the share to the worldwide CO2-emission of every country. 
+2.	Barchart which visualises the total emission per region. Divided in Africa, Developing America, Centrally planned Asia,             Centrally planned Europe, Far East, Middle East, North America, Oceania & Western Europe. 
 
 3.	Circle diagram for every country which visualises the share of each production sector in the nationaal CO2 emission.
 
 ### Prerequisites
 Data Sources
-https://data.worldbank.org/indicator/EN.ATM.CO2E.KT?view=map, 
-https://www.eea.europa.eu/data-and-maps/daviz/ghg-emissions-by-sector-in#tab-chart_1, 
-https://www.eea.europa.eu/data-and-maps/data/national-emissions-reported-to-the-unfccc-and-to-the-eu-greenhouse-gas-monitoring-mechanism-14, 
-https://data.worldbank.org/indicator/EN.CO2.TRAN.ZS, 
-https://www.carbonbrief.org/paris-2015-tracking-country-climate-pledges
 
 
 
