@@ -9,7 +9,7 @@ Description for project
 On November 30th till December 12th 2015, the Climate Summit took place in Paris. The results were promising, 195 countries signed the “Agreement of Paris”. The Netherlands signed the agreement as well, which means they have to reduce their CO2-emission before 2030 with 49%. Almost all the countries will have to reduce their CO2-emission strongly in order to reach the agreement. But first things first, what does the actual CO2 in all the countries look like through different sectors?
 
 
-1.	Interactive world map with the CO2 emission per country and a slider to change the year. 
+1.	Interactive world map with the CO2 emission per country and a slider to change the year. A tooltip gives the CO2 emission for every country a says if this specific country signed the agreement of Paris or not.
 
 <img src="Images/worldmap.png" width="400">
 
