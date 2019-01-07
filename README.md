@@ -25,6 +25,12 @@ On November 30th till December 12th 2015, the Climate Summit took place in Paris
 ## Sketch  
 The website contains of two tabs, the first tab is the homepage which tells you the story about the Paris Agreement and gives the references. As is shown in the sketches below. When the users clicks on a random country, the barchart will zoom in to the region in which region this country belongs and shows how this region is built up. At the same time the piechart shows how the total emission of this random country is divided in the different sectors. When the users clicks on another country inside a region, the piechart shows the total emission divided in the different sectors of this country.  
 
+![Figure 1](/Images/homepage.png "Homepage")
+![Figure 1](/Images/visualization.png "Visualization")
+
+
+
+
 
 ### Prerequisites
 Data Sources
