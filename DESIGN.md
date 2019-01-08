@@ -16,5 +16,5 @@ For the circle diagram a dictionary has a key which is the Country. This key has
 
 
 ### D3 Plugins
-> D3 Tooltip
+> D3 Tooltip  
 > D3 Worldmap
