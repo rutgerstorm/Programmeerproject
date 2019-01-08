@@ -42,6 +42,13 @@ For the barchart another dictionary is created for the regions barchart. This di
 
 For the circle diagram a dictionary has a key which is the Country. This key has 9 values, where every value represents the percentage of emission in a sector. The order of the values should be the same for every country. So the first section of every pie chart for every country is always 'Transport, the second is always 'Forestry, the third is "Energy' etc.
 
+{  
+	"2008": {  
+		"Netherlands": {"Transport": "33188.7", "Forestry": "2713.3333", etc.}  
+    		"Germany": {"Transport": "157037", "Forestry": "26400"}  
+}  
+}  
+
 ---
 
 <img src="Images/diagram2.png" width="350">
