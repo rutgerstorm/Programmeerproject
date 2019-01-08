@@ -17,10 +17,8 @@ For the worldmap a dictionary will be used with every 'Year' as key. The value o
 
 {  
 	"2008": {  
-		"Netherlands": "48274",  
-		"Agreement Signed": "Yes",  
-    "Germany": "212862",  
-    "Agreement Signed": "Yes", etc.}  
+		"Netherlands": "48274", "Yes",  
+    		"Germany": "212862", "Yes", etc.}  
 }
 
 
@@ -40,20 +38,18 @@ For the barchart another dictionary is created for the regions barchart. This di
 }  
 }  
 
-For the circle diagram a dictionary has a key which is the Country. This key has 9 values, where every value represents the percentage of emission in a sector. The order of the values should be the same for every country. So the first section of every pie chart for every country is always 'Transport, the second is always 'Forestry, the third is "Energy' etc.
+For the circle diagram a dictionary has a key which also is the year. This key has another key as value, the Country. This Country key has 9 values, where every value represents the percentage of emission in a sector. The order of the values should be the same for every country. So the first section of every pie chart for every country is always 'Transport, the second is always 'Forestry, the third is "Energy' etc.
 
 {  
 	"2008": {  
-		"Netherlands": {"Transport": "33188.7", "Forestry": "2713.3333", etc.}  
-    		"Germany": {"Transport": "157037", "Forestry": "26400"}  
+		"Netherlands": {"33188.7", "2713.3333", etc.}  
+    		"Germany": {"157037", "26400"}  
 }  
 }  
 
 ---
 
-<img src="Images/diagram2.png" width="350">
 
-When the Json libraries are created and complete, they will be used to create the visualizations. For the worldmap, the D3 worldmap Plugin is needed.
 
 ---
 
