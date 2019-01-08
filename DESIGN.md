@@ -30,7 +30,7 @@ For the barchart another dictionary is created for the regions barchart. This di
 	"2008": {  
 		"Africa": "325814",  
 		"Western Europe": "708718", etc.}  
-}  
+  
 }  
 
 {  
