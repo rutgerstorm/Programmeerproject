@@ -15,13 +15,38 @@ The data is stored as csv and has to be parsed and then converted to a json file
 
 For the worldmap a dictionary will be used with every 'Year' as key. The value of this key is another key, the 'Country'. The 'Country' key has two values, the total CO2 emission and a yes or no, depending on if this specific country signed the Paris Agreement.
 
-For the barchart another dictionary is created for the regions barchart. This dictionary is quite simple, the key is the Region and the value is the total emission of this region. Then there is also the country barchart for every region, therefore another dictinary is created. This dictionary has the Region as key, the value of this key is another key, the countries. The country key has as value which is the total emission of this country.
+{
+	"2008": {
+		"Netherlands": "48274",
+		"Agreement Signed": "Yes",
+    "Germany": "212862",
+    "Agreement Signed": "Yes", etc.}
+}
+
+
+For the barchart another dictionary is created for the regions barchart. This dictionary is quite the same as above, the key is the Year and the value is the Region as key which has a value that is equal to the total emission of this region. Then there is also the country barchart for every region, therefore another dictinary is created. This dictionary has the Region as key, the value of this key is another key, the countries. The country key has as value which is the total emission of this country.
+
+{
+	"2008": {
+		"Africa": "325814",
+		"Western Europe": "708718", etc.}
+}
+}
+
+{
+	"2008": {
+		"Africa": {"Algeria": "30054", "Angola": "7011", etc.} 
+    "Developing America": {"Antigua & Barbuda": "131", Argentina: "51570"}
+}
+}
 
 For the circle diagram a dictionary has a key which is the Country. This key has 9 values, where every value represents the percentage of emission in a sector. The order of the values should be the same for every country. So the first section of every pie chart for every country is always 'Transport, the second is always 'Forestry, the third is "Energy' etc.
 
 ---
 
 <img src="Images/diagram2.png" width="350">
+
+When the Json libraries are created and complete, they will be used to create the visualizations. For the worldmap, the D3 worldmap Plugin is needed.
 
 ---
 
