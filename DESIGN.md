@@ -49,7 +49,9 @@ For the circle diagram a dictionary has a key which also is the year. This key h
 
 ---
 
+<img src="Images/visualization.png" width="400">
 
+The image above shows how the 3 visualizations interact with each other. When the user hovers over a country on the worldmap, the value of total CO2 emission is shown along with the yes or no regarding the Paris Agreement. A this moment the barchart only shows the bars from the regions with their total CO2 emissions plotted. When the users clicks on a country, the barchart will zoom in to the region this country belongs to and shows the barchart for all the countries in this region. The piechart shows how the emission from this country is divided through the different sectors. When the users clicks on a specific country in the barchart, the pie chart will adjust to this specific country.
 
 ---
 
