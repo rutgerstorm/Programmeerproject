@@ -56,6 +56,6 @@ The image above shows how the 3 visualizations interact with each other. When th
 ---
 
 ### D3 Plugins
-> D3 Tooltip  
-> D3 Worldmap  
+> * D3 Tooltip  
+> * D3 Worldmap  
 > Other might follow during the process
