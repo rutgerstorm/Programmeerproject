@@ -1,55 +1,29 @@
 import csv
-# import json
+import json
 
 country = []
 value = []
-year = []
-data_dict = {}
+year = set()
+year_dict = {}
+country_dict = {}
 
 # Opening the csv file, if the row length is equal to 3 and contains 'KTOE'
 # as element, the right data is found
 with open('nation.1751_2014-1.csv') as csv_file:
     csv_reader = csv.DictReader(csv_file)
     for row in csv_reader:
-        print(row)
+        test = (row["Year"])
+        if (int(test)) >= 2000 and (int(test)) <= 2010:
+            if (row["Year"]) in year_dict.keys():
+                pass
+            else:
+                year_dict[(row["Year"])] = {}
 
+            year_dict[(row["Year"])][row["Nation"]] = row["Total CO2 emissions"]
 
-        # if '20' in row["Year"]:
-        #     print("YESSSSS")
-        #     country.append(row['Nation'])
+# Writing the data to a json.file
+fileName = 'data'
+data = year_dict
 
-        # year.append((row["Year"])*10)
-    # print(country)
-
-#
-# with open('paris-agreement-entry-into-force.csv') as csv_file:
-#     csv_reader = csv.reader(csv_file)
-#     for row in csv_reader:
-#         if "Ratification" in row:
-#             append 'yes' to country
-#         elif "Acceptance" in row:
-#             apppend 'yes' to country
-#         elif "Approval" in row:
-#             append 'yes' to country
-#         else:
-#             append 'no' to country
-
-
-
-            # print(i)
-            # if r== 2000:
-                # year.append(row["Year"])
-#             if row[5] == '2015':
-#                 country.append(row[0].lstrip())
-#                 value.append(row[6].lstrip())
-#
-# # Creating a dictionary with the right keys and values
-# for i in range(len(value)):
-#     data_dict[country[i]] = {"Energy Production": value[i]}
-#
-# # Writing the data to a json.file
-# fileName = 'data'
-# data = data_dict
-#
-# with open('data_energy.json', 'w') as outfile:
-#     json.dump(data, outfile)
+with open('data_nation.json', 'w') as outfile:
+    json.dump(data, outfile)

@@ -1,7 +1,4 @@
-"Nation","Year","Total CO2 emissions from fossil-fuels and cement production (thousand metric tons of C)","Emissions from solid fuel consumption","Emissions from liquid fuel consumption","Emissions from gas fuel consumption","Emissions from cement production","Emissions from gas flaring","Per capita CO2 emissions (metric tons of carbon)","Emissions from bunker fuels (not included in the totals)"
-(Note: missing values denoted by ".")
-Source: Tom Boden and Bob Andres (Oak Ridge National Laboratory); Gregg Marland (Appalachian State University)
-DOI: 10.3334/CDIAC/00001_V2017
+"Nation","Year","Total CO2 emissions","Emissions from solid fuel consumption","Emissions from liquid fuel consumption","Emissions from gas fuel consumption","Emissions from cement production","Emissions from gas flaring","Per capita CO2 emissions (metric tons of carbon)","Emissions from bunker fuels (not included in the totals)"
 "AFGHANISTAN",1949,4,4,0,0,0,.,.,0
 "AFGHANISTAN",1950,23,6,18,0,0,0,0,0
 "AFGHANISTAN",1951,25,7,18,0,0,0,0,0
