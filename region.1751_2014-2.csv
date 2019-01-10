@@ -1,7 +1,4 @@
-"Region","Year","Total CO2 emissions from fossil-fuels and cement production (thousand metric tons of C)","Emissions from solid fuel consumption","Emissions from liquid fuel consumption","Emissions from gas fuel consumption","Emissions from cement production","Emissions from gas flaring","Per capita CO2 emissions (metric tons of carbon)"
-(Note: missing values denoted by ".")
-Source: Tom Boden and Bob Andres (Oak Ridge National Laboratory); Gregg Marland (Appalachian State University)
-DOI: 10.3334/CDIAC/00001_V2017
+"Region","Year","Total CO2 emissions","Emissions from solid fuel consumption","Emissions from liquid fuel consumption","Emissions from gas fuel consumption","Emissions from cement production","Emissions from gas flaring","Per capita CO2 emissions (metric tons of carbon)"
 "Africa",1884,6,6,0,0,0,0,.
 "Africa",1885,10,10,0,0,0,0,.
 "Africa",1886,13,13,0,0,0,0,.
