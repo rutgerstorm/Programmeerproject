@@ -1,5 +1,5 @@
 body{
-  background: #383E42
+  background: rgb(179, 204, 204)
 
 }
 
@@ -7,7 +7,6 @@ h3 {
   font-family: sans-serif;
   font-size: 100%;
   text-indent: 30px;
-  color: rgb(255, 255, 255)
 
 }
 h3 {
@@ -60,4 +59,8 @@ nav a{
 }
 nav a:hover{
   color: rgb(102, 153, 153)
+}
+
+svg{
+  background: rgb(255, 255, 255)
 }
