@@ -1,15 +1,35 @@
-// var region = [Africa, ]
+// var dataDict = {}
+// var regions = []
+// var years = []
 
 
 d3.json("data_region1.json").then(function(data)
 {
-values = Object.values(data)
-years = Object.keys(data)
-regions = Object.keys(values[0])
-values[0] = Object.values(values[0])
-console.log(regions)
-console.log(values[0])
-keys = Object.keys(values)
+generalValues = Object.values(data)
+// console.log(generalValues)
+regionValues =  Object.values(generalValues)
+
+year = Object.keys(data)
+
+
+regions = Object.keys(generalValues[0])
+
+for (i = 0; i < 11; i++) {
+  console.log(year[i])
+  console.log(regions)
+  console.log((Object.values(regionValues[i])))
+
+
+//   regions = Object.keys(values[i])
+//   console.log(regions)
+//   years[i] = Object.keys(data)
+// //   console.log(years)
+// dataDict[year[i]].push(regions[i])
+}
+// values[0] = Object.values(values[0])
+// console.log(regions)
+// console.log(values[0])
+
 // console.log(values[0])
 // console.log(values[0])
 // console.log(keys)
