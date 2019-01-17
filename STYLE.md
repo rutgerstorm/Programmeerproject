@@ -9,10 +9,13 @@
 
 ### Rules
 1. Use camelcase to name variables
-* Column limit should be 80 characters
-* No unused variables
-* Space after keywords
-* Use "===" for equality
-* Use `/** ... */` for multi-line comments
-* 
+2. Column limit should be 80 characters
+3. No unused variables
+4. Space after keywords
+5. Use "===" for equality
+6. Use `/** ... */` for multi-line comments
+7. One whitespave above comments
+8. No leading comma's
+9. Use semicoloms
+10. Use double quotes
 
