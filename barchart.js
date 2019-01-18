@@ -1,45 +1,64 @@
-// var dataDict = {}
-// var regions = []
+// function makeLineChart(countryLine){
+
+console.log(countryLine);
+var dataDict = {}
+var regionDict = {}
 // var years = []
 
+d3.json("data_piechart.json").then(function(data){
 
-d3.json("data_region1.json").then(function(data)
-{
-generalValues = Object.values(data)
-// console.log(generalValues)
-regionValues =  Object.values(generalValues)
+  // console.log(data)
+  lijst = []
 
-year = Object.keys(data)
+  for (year in data){
+    obj = {}
 
+    obj["Year"] = Math.abs(year);
+    obj["Value"] = data[year][countryLine]
+    // console.log(data[year][countryLine]);
+    lijst.push(obj)
 
-regions = Object.keys(generalValues[0])
-
-for (i = 0; i < 11; i++) {
-  console.log(year[i])
-  console.log(regions)
-  console.log((Object.values(regionValues[i])))
+  }
+  makeBar()
 
 
-//   regions = Object.keys(values[i])
-//   console.log(regions)
-//   years[i] = Object.keys(data)
-// //   console.log(years)
-// dataDict[year[i]].push(regions[i])
-}
-// values[0] = Object.values(values[0])
-// console.log(regions)
-// console.log(values[0])
 
-// console.log(values[0])
-// console.log(values[0])
-// console.log(keys)
-// values.forEach(function(d){
-//   console.log(d)
-// })
-  // values.forEach(function(d){
-  // console.log(d.region)
-  // })
-})
+
+
+
+// function creatingData(){
+// d3.json("data_region1.json").then(function(data)
+// {
+// generalValues = Object.values(data)
+// // console.log(generalValues)
+// regionValues =  Object.values(generalValues)
+//
+//
+// year = Object.keys(data)
+//
+//
+// regions = Object.keys(generalValues[0])
+
+// for (i = 0; i < year.length; i++)
+// {
+//   // console.log(year[i])
+//   // console.log(regions)
+//   // console.log(Object.values(regionValues[i]))
+//   for (x = 0; x < 15; x++)
+//   {
+//     regionDict[(regions[x])] = ((Object.values(regionValues[i])[x]));
+//
+//     // dataDict[year[i]] = ((regionDict[regions[x]]) = (Object.values(regionValues[i])[x]))
+//     dataDict[year[i]] = regionDict
+//
+//   }
+//
+// }
+//
+// // dataDict[data1[i].time].push([data1[i].Country, data1[i].datapoint, data2[j].datapoint])
+// }
+// }
+// creatingData()
 //   Selecting the values of the countries, push it into lists
 //   keys = Object.keys(data);
 //   values = Object.values(data)
@@ -57,27 +76,29 @@ for (i = 0; i < 11; i++) {
 // creatingData()
 
 //
-// function makeBar(){
-//   //Width and height from the SVG
-//   var w = 800;
-//   var h = 450;
-//   var barPadding = 2;
-//   var margin = 50
-//
-//   var svg = d3.select("body")
-//     .append("svg")
-//     .attr("width", w + 5)
-//     .attr("height", h + 5);
-//
-//   // Adjusting the xScale
-//   var xScale = d3.scaleBand()
-//     .domain(countries)
-//     .range([0, 750]);
-//
-//   // Adjusting the yScale
-//   var yScale = d3.scaleLinear()
-//          .domain([0, 30])
-//          .range([h - margin, 0]);
+
+function makeBar(){
+  //Width and height from the SVG
+  var w = 750;
+  var h = 400;
+  var barPadding = 2;
+  var margin = 30
+
+  var svg = d3.select("body")
+    .append("svg")
+    .attr("width", w + 5)
+    .attr("height", h + 5);
+
+
+  // Adjusting the xScale
+  var xScale = d3.scaleBand()
+    .domain([obj["Year"]])
+    .range([0, w]);
+
+  // Adjusting the yScale
+  var yScale = d3.scaleLinear()
+         .domain([45000, 55000])
+         .range([h, 0]);
 //
 // // Added a tooltip which shows the exact value for every country
 // var tooltip = d3.select('body').append("div")
@@ -89,86 +110,25 @@ for (i = 0; i < 11; i++) {
 //
 //
 //
-//   // Create the barchart
-//   svg.selectAll("rect")
-//       .data(totalPercentage)
-//       .enter()
-//       .append("rect")
-//       .attr("y", function(d) {
-//         return yScale(d) + (0.5 * margin);
-//       })
-//       .attr("width", (w - margin) / (totalPercentage.length + 1))
-//       .attr("height", function(d) {
-//         return h - (margin) - yScale(d);
-//        })
-//       .attr("x", function(d, i) {
-//         return xScale(countries[i]) + margin;
-//          })
-//       .attr("fill", function(d) {
-//        return "rgb(0, 0, " + (d * 15) + ")"
-//      })
-//      .on("mouseover", function(d){
-//        tooltip.html(d)
-//          .style('left', (d3.eventPageX) + 'px')
-//          .style('top', (d3.eventPageY) + 'px')
-//          .text(d);
-//        d3.select(this).style('fill', 'rgb(204, 51, 0)')
-//      })
-//      .on("mouseout", function(d)
-//      {
-//        tooltip.transition()
-//        d3.select(this).style('fill', "rgb(0, 0, " + (d * 15) + ")")
-//
-//      })
-//      .on("click", function(d, i){
-//        update(d, menPercentage[i], womenPercentage[i]);
-//      })
-//
-//
-//
-//    // Creating the axis
-//    function createAxis(){
-//      // Create the y axis
-//      var yAxis = svg.append('g')
-//          .attr("class", "y axis")
-//          .style("font-family", "sans-serif")
-//          .style("font-size", "8px")
-//          .attr("transform", "translate(50,25)")
-//          .call(d3.axisLeft(yScale));
-//
-//      // Create the x axis
-//      var xAxis = svg.append('g')
-//          .attr("class", "x axis")
-//          .style("font-family", "sans-serif")
-//          .style("font-size", "6px")
-//          .attr("transform", "translate(50,425)")
-//          .call(d3.axisBottom(xScale));
-//
-//     // Adding the title
-//     svg.append("text")
-//         .attr("transform", "translate(400, 25)")
-//         .style("text-anchor", "end")
-//         .style("font-family", "sans-serif")
-//         .style("font-size", "17px")
-//         .text("Percentage Unemployment per Country");
-//
-//     // Adding units for x-axis
-//     svg.append("text")
-//         .attr("transform", "translate(750, 455)")
-//         .style("text-anchor", "end")
-//         .style("font-family", "sans-serif")
-//         .style("font-size", "10px")
-//         .text("Countries");
-//
-//     // Adding units for y-axis
-//     svg.append("text")
-//               .attr("x",-360)
-//               .attr("y", 15)
-//               .attr("transform", "rotate(-90)")
-//               .style("text-anchor", "end")
-//               .style("font-family", "sans-serif")
-//               .style("font-size", "10px")
-//               .text("Percentage %");
-//    }
-//    createAxis()
-// }
+  // Create the barchart
+  svg.selectAll("rect")
+      .data(obj["Value"])
+      .enter()
+      .append("rect")
+      .attr("y", function(d) {
+        return yScale(d) + (0.5 * margin);
+      })
+      .attr("width", (w - margin) / (25 + 1))
+      .attr("height", function(d) {
+        return h - (margin) - yScale(d);
+       })
+      .attr("x", function(d) {
+        return xScale(d) + margin;
+         })
+      .attr("fill", function(d) {
+       return "rgb(0, 0, " + (d * 15) + ")"
+     })
+
+   }
+
+ })

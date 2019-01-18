@@ -28,9 +28,9 @@ dict = {
     }
 }
 
-# Opening the csv file, if the row length is equal to 3 and contains 'KTOE'
+# Opening the csv file, if the row length is equal to 3 and contains "KTOE"
 # as element, the right data is found
-with open('nation.1751_2014-1.csv') as csv_file:
+with open("nation.1751_2014-1.csv") as csv_file:
     csv_reader = csv.DictReader(csv_file)
     for row in csv_reader:
         year = (row["Year"])
@@ -53,8 +53,8 @@ with open('nation.1751_2014-1.csv') as csv_file:
         for region in region_list:
             # print(region)
             if (row["Year"]) in year_dict.keys():
-                print(year_dict.keys())
-            #     if region  key
+                print(row["Year"])
+                if region == key:
             #         if nation as value --> Then:
             #             year_dict[(row["Year"])][region][row["nation"]] = row["Total CO2 emissions"]
 

@@ -11,7 +11,7 @@ with open('nation.1751_2014-1.csv') as csv_file:
     csv_reader = csv.DictReader(csv_file)
     for row in csv_reader:
         year = (row["Year"])
-        if (int(year)) >= 2000 and (int(year)) <= 2010:
+        if (int(year)) >= 2000 and (int(year)) <= 2014:
             if (row["Year"]) in year_dict.keys():
                 pass
             else:

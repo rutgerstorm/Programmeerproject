@@ -1,3 +1,11 @@
+
+
+
+
+country = "Sweden"
+
+
+
 window.onload = function() {
   var worldmap = "world_countriesTest.json"
   var request = [d3.json(worldmap)];
@@ -98,16 +106,22 @@ svg.append("g")
       .style('stroke', 'white')
       .style('stroke-width', 1.5)
       .style("opacity",0.8)
-      .attr("fill", function(d) {
-           if (f.properties["Paris"] = "Yes")
-           {
-             return 'rgb(66, 134, 244)'
-           }
-           else
-           {
-             return "blue"
-           }
-           })
+      .on("click", function(g){
+        makeLineChart(g.properties.name)
+      })
+      // .on("click", function(g){
+      //   makeBarChart(g.properties.name)
+      // })
+      // .attr("fill", function(d) {
+      //      if (f.properties["Paris"] = "Yes")
+      //      {
+      //        return 'rgb(66, 134, 244)'
+      //      }
+      //      else
+      //      {
+      //        return "blue"
+      //      }
+      //      })
       // .attr("fill",
       //   if (f.properties["Paris"] = "Yes")
       // {
@@ -123,6 +137,7 @@ svg.append("g")
   //
   //   return "rgb(" + countryColor[d] + ")"
   // })
+
 
 
       // tooltips
