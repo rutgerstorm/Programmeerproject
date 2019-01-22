@@ -19,8 +19,8 @@ with open('global-carbon-dioxide-emissions-by-sector-gg-co-1.csv') as csv_file:
             else:
                 year_dict[(row["Year"])] = {}
 
-            year_dict[(row["Year"])][row["Entity"]] = (row["Transport"]), row["Forestry"], row["Energy"], row["Other sources"], row["Agriculture, Land Use & Forestry"], row["Waste"], row["Residential & commercial"], row["Industry"], row["Agriculture"]
-            print(year_dict)
+            year_dict[(row["Year"])][row["Entity"].upper()] = (row["Transport"]), row["Forestry"], row["Energy"], row["Other sources"], row["Agriculture, Land Use & Forestry"], row["Waste"], row["Residential & commercial"], row["Industry"], row["Agriculture"]
+    print(year_dict)
 # Writing the data to a json.file
 fileName = 'data'
 data = year_dict

@@ -1,15 +1,12 @@
 
 
-
-
-country = "Sweden"
-
-
-
 window.onload = function() {
   var worldmap = "world_countriesTest.json"
   var request = [d3.json(worldmap)];
   var countryColor = ["0, 0, 255", "255, 204, 0"]
+  var color = d3.scaleOrdinal()
+  .range("blue", "red")
+  .domain("Yes", "No");
 
   // Transform datasets through transform functions
   Promise.all(request).then(function(response){
@@ -106,20 +103,23 @@ svg.append("g")
       .style('stroke', 'white')
       .style('stroke-width', 1.5)
       .style("opacity",0.8)
+      .style("fill", "rgb(38, 38, 38)")
       .on("click", function(g){
         makeLineChart(g.properties.name)
       })
+      // .on("click", function(g){
+      //   countryBarchart(g.properties.name)
+      // })
       // .on("click", function(g){
       //   makeBarChart(g.properties.name)
       // })
       // .attr("fill", function(d) {
       //      if (f.properties["Paris"] = "Yes")
       //      {
-      //        return 'rgb(66, 134, 244)'
+      //        return {'rgb(66, 134, 244)'}
       //      }
-      //      else
-      //      {
-      //        return "blue"
+      //      else {
+      //        return {"blue"}
       //      }
       //      })
       // .attr("fill",
@@ -147,9 +147,18 @@ svg.append("g")
           // tip.show(d);
 
           d3.select(this)
-            .style("opacity", 1)
+            // .style("opacity", 0.8)
+            .style('fill', 'rgb(51, 153, 102)')
             .style("stroke","white")
             .style("stroke-width",2);
+        })
+        .on('mouseout',function(d){
+          // tip.show(d);
+
+          d3.select(this)
+            .style("fill", "rgb(38, 38, 38)")
+            .style("stroke","white")
+            .style("stroke-width",0.4);
         })
       })
     }
