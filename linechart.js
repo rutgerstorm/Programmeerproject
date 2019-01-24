@@ -106,6 +106,9 @@ console.log(d3.min(lijst, function(d){return d["Value"]}))
     // .selectAll("g")
     // .selectAll("circle")
     // .data(lijst);
+  var div = d3.select("body").append("div")
+      .attr("class", "tooltip")				
+      .style("opacity", 0);
 
     svg.append("g")
       .attr("class", "xAxis")
@@ -162,7 +165,7 @@ console.log(d3.min(lijst, function(d){return d["Value"]}))
         .on("click",(lijst, function(d){
           createBar(d["Year"], countryLine)
         }))
-        
+
         .merge(scatter)
         .transition()
         .duration(1500)
