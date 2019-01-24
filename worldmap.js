@@ -35,10 +35,10 @@ var projection = d3.geoMercator()
 
 var path = d3.geoPath().projection(projection);
 
-var svg = d3.select("body")
-            .append("svg")
+var svg = d3.select("#Worldmap")
             .attr("width", w + 5)
             .attr("height", h + 5);
+
 
 
 d3.json("data_agreement.json").then(function(data)

@@ -2,8 +2,8 @@
 sectors = ["Transport", "Forestry","Energy","Other sources","Agriculture, Land Use & Forestry","Waste","Residential & commercial","Industry","Agriculture"]
 function createBar(year, country){
 console.log(year)
-country = country.toLowerCase();
-country = country.charAt(0).toUpperCase() + country.slice(1)
+// country = country.toLowerCase();
+// country = country.charAt(0).toUpperCase() + country.slice(1)
 console.log(country)
 // console.log(countryBar);
 var dataDict = {}
@@ -30,8 +30,7 @@ function makeBar(){
   var barPadding = 2;
   var margin = 30
 
-  var svg = d3.select("body")
-    .append("svg")
+  var svg = d3.select("#Barchart")
     .attr("width", w + 5)
     .attr("height", h + 5);
 
@@ -58,39 +57,82 @@ function makeBar(){
 //
   // Create the barchart
   console.log(data);
-  svg.selectAll("rect")
-      .data(data)
-      .enter()
+  var bar = svg.selectAll("rect")
+            .data(data);
+      bar.enter()
       .append("rect")
-      .attr("y", function(d) {
-        return yScale(d) + (0.5 * margin) + 6;
-      })
-      .attr("width", (w - margin) / (20))
-      .attr("height", function(d) {
-        return h - (margin) - yScale(d);
-       })
-      .attr("x", function(d, i) { ;return xScale(sectors[i]) + margin; })
+      .attr("x", function(d, i) { return xScale(sectors[i]) + margin; })
       .attr("fill", function(d) {
-       return "rgb(0, 0, " + (d * 0.01) + ")"
+       return "rgb(0, 0, " + (d * 0.001) + ")"
      })
+      .on('mouseover',function(d){
+        d3.select(this)
+          .style("fill", "rgb(255, 170, 0)")
+       })
+     .on('mouseout',function(d){
+       d3.select(this)
+         .style("fill", function(d) {
+          return "rgb(0, 0, " + (d * 0.001) + ")"
+      })
+      })
+      .merge(bar)
+        .transition()
+        .duration(1000)
+        .attr("y", function(d) {
+        return yScale(d) + (0.5 * margin) + 6;
+        })
+        .attr("width", (w - margin) / (20))
+        .attr("height", function(d) {
+          return h - (margin) - yScale(d);
+         })
+
      function createAxis(){
       // Create the y axis
       var yAxis = svg.append('g')
-          .attr("class", "y axis")
+          .attr("class", "yAxis")
           .style("font-family", "sans-serif")
           .style("font-size", "8px")
           .attr("transform", "translate(50,20)")
-          .call(d3.axisLeft(yScale));
+          // .call(d3.axisLeft(yScale));
 
       // Create the x axis
       var xAxis = svg.append('g')
-          .attr("class", "x axis")
+          .attr("class", "xAxis")
           .style("font-family", "sans-serif")
           .style("font-size", "6px")
           .attr("transform", "translate(20,390)")
-          .call(d3.axisBottom(xScale));
+          // .call(d3.axisBottom(xScale));
+
+          svg.select(".yAxis")
+            .transition()
+            .duration(1000)
+            .call(d3.axisLeft(yScale));
+
+            svg.select(".xAxis")
+              .transition()
+              .duration(1000)
+              .call(d3.axisBottom(xScale));
     }
     createAxis()
+
+    var dataTime = d3.range(0, 10).map(function(d) {
+    return new Date(1995 + d, 10, 3);
+  });
+
+  var sliderTime = d3
+    .sliderBottom()
+    .min(d3.min(dataTime))
+    .max(d3.max(dataTime))
+    .step(1000 * 60 * 60 * 24 * 365)
+    .width(300)
+    .tickFormat(d3.timeFormat('%Y'))
+    .tickValues(dataTime)
+    .default(new Date(1998, 10, 3))
+    .on('onchange', val => {
+      d3.select('p#value-time').text(d3.timeFormat('%Y')(val));
+    });
+
+
    }
 
  })

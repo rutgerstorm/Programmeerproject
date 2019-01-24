@@ -81,17 +81,17 @@ console.log(d3.min(lijst, function(d){return d["Value"]}))
 
 
 
-  var xScaleData = d3.scaleLinear()
-      .domain([1999, 2015]) // input
-      .range([0, width - margin])
+  var xScaleData = d3.scaleBand()
+      .domain(["2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014"]) // input
+      .range([margin - 5, width])
 
   var yScaleData = d3.scaleLinear()
-      .domain([(d3.max(lijst, function(d){return d["Value"]})), d3.min(lijst, function(d){return d["Value"]})]) // input
+      .domain([(d3.max(lijst, function(d){return d["Value"]})), d3.min(lijst, function(d){return d["Value"]/1.05})]) // input
       .range([margin, height - margin])
 
 
   var line = d3.line()
-      .x(function(d) {return (xScaleData(d.Year))+1})
+      .x(function(d) {return (xScaleData(d.Year))})
       // d3.max(d.Year, function(d) { return d; })
       .y(function(d) {return ((yScaleData(d.Value)))})
 
@@ -99,42 +99,56 @@ console.log(d3.min(lijst, function(d){return d["Value"]}))
       // x.domain(d3.extent(, function(d) { return +d}));
       // y.domain(d3.extent(Object.values(countryDict), function(d) { return +d }));
 
-  var svg = d3.select("body")
-    .append("svg")
+  var svg = d3.select("#Linechart")
     .attr("width", width + 5)
     .attr("height", height + 5);
+    // .selectAll("path")
+    // .selectAll("g")
+    // .selectAll("circle")
+    // .data(lijst);
 
     svg.append("g")
-      .attr("class", "x axis")
-      .attr("transform", "translate(1," + (height - 50) + ")")
-      .call(d3.axisBottom(xScaleData));
+      .attr("class", "xAxis")
+      .attr("transform", "translate(-23," + (height - 50) + ")")
+      // .call(d3.axisBottom(xScaleData));
 
       svg.append("g")
-          .attr("class", "y axis")
+          .attr("class", "yAxis")
           .attr("transform", "translate(45,0)")
-          .call(d3.axisLeft(yScaleData));
+          // .call(d3.axisLeft(yScaleData));
 
 // linegraph = function(country){
     svg.append("path")
-      .datum(lijst) // 10. Binds data to the line
-      .attr("class", "line") // Assign a class for styling
+      // .datum(lijst)
+      .attr("class", "line")
       .attr("fill", "none")
      .attr("stroke", "rgb(102, 140, 255)")
      .attr("stroke-linejoin", "round")
      .attr("stroke-linecap", "round")
      .attr("stroke-width", 3)
-     .attr("d", line);
+     .attr("id", "line")
+     // .attr("d", line);
 
-// linegraph(Afghanistan)
+  svg.select("#line")
+    .datum(lijst)
+    .transition()
+      .duration(1000)
+      .attr("d", line);
 
-     svg.selectAll("circle")
-        .data(lijst)
-        .enter()
+  svg.select(".yAxis")
+    .transition()
+    .duration(1000)
+    .call(d3.axisLeft(yScaleData));
+
+    svg.select(".xAxis")
+      .transition()
+      .duration(1000)
+      .call(d3.axisBottom(xScaleData));
+
+     var scatter = svg.selectAll("circle")
+                    .data(lijst);
+        scatter.enter()
         .append("circle")
-        .attr("cx", (lijst, function(d)
-        {return xScaleData(d["Year"]);  }))
-        .attr("cy", (lijst, function(d)
-        {return (yScaleData(d["Value"]))}))
         .attr("r", 5)
         .on('mouseover',function(d){
           d3.select(this)
@@ -148,6 +162,40 @@ console.log(d3.min(lijst, function(d){return d["Value"]}))
         .on("click",(lijst, function(d){
           createBar(d["Year"], countryLine)
         }))
+        
+        .merge(scatter)
+        .transition()
+        .duration(1500)
+        .attr("cx", (lijst, function(d)
+        {return xScaleData(d["Year"]);  }))
+        .attr("cy", (lijst, function(d)
+        {return (yScaleData(d["Value"]))}))
+
+
+
+        //
+        // svg.selectAll("circle")
+        //    .data(lijst)
+        //    .enter()
+        //    .append("circle")
+        //    .attr("cx", (lijst, function(d)
+        //    {return xScaleData(d["Year"]);  }))
+        //    .attr("cy", (lijst, function(d)
+        //    {return (yScaleData(d["Value"]))}))
+        //    .attr("r", 5)
+        //    .on('mouseover',function(d){
+        //      d3.select(this)
+        //        .style("opacity",0.4)
+        //        .text(function(d, i) { return d["Value"]; })
+        //    })
+        //    .on('mouseout',function(d){
+        //      d3.select(this)
+        //      .style("opacity",1)
+        //    })
+        //    .on("click",(lijst, function(d){
+        //      createBar(d["Year"], countryLine)
+        //    }))
+
 
 
      // g.selectAll("circle").data(data).enter()

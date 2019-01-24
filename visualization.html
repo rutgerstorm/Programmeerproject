@@ -32,6 +32,9 @@
       <p>Visualization will be shown down here </p>
         <script type="text/javascript">
         </script>
+        <svg width="0" height="0" id="Worldmap"></svg>
+        <svg width="0" height="0" id="Linechart"></svg>
+        <svg width="0" height="0" id="Barchart"></svg>
         <div class="">
       <div class="dropdown">
         <div class="dropdown-content">
@@ -279,8 +282,9 @@
   </select>
         </div>
       </div>
-      <div class="slidecontainer">
-  <input type="range" min="2000" max="2014" class="slider" id="myRange">
-</div>
+      <div class="Slider">
+        <div class="col-sm-2"><p id="value-time"></p></div>
+        <div class="col-sm"><div id="slider-time"></div></div>
+      </div>
     </body>
 </html>
