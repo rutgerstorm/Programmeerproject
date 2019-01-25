@@ -112,13 +112,15 @@ console.log(d3.min(lijst, function(d){return d["Value"]}))
     // .selectAll("g")
     // .selectAll("circle")
     // .data(lijst);
-  var div = d3.select("body")
-      .append("div")
-      .style("display", "true")
-      .attr("class", "tooltip")
-      .style("opacity", 1)
-      .style("font-size", "11px")
-      .style("font-family", "sans-serif");
+  // var div = svg
+  //     .append("g")
+      // .style("display", "true")
+      // .attr("class", "tooltip")
+      // .style("opacity", 1)
+      // .style("font-size", "11px")
+      // .style("font-family", "sans-serif");
+
+      div = svg.append("text").attr("x", 50).attr("y", 50)
 
   svg.append("text")
         .attr("transform", "translate(450, 25)")
@@ -193,17 +195,21 @@ console.log(d3.min(lijst, function(d){return d["Value"]}))
         .attr("r", 5)
         .attr("class", countryLine)
         .on('mouseover',function(d){
-          div.html(d)
-          .style("display", "inline")
+          console.log(xScaleData(d["Year"]));
+          div
+          .attr("x",
+            (xScaleData(d["Year"]) - 8))
+          .attr("y",
+            (yScaleData(d["Value"]) -20))
           .style("display", "true")
-          .style('left', (d3.eventPageX - 100)+ 'px')
-          .style('top', (d3.eventPageY - 500)+ 'px')
           .text((d.Value));
           d3.select(this)
             .style("opacity",0.4)
         //     .text(function(d, i) { return d["Value"]; })
         })
         .on('mouseout',function(d){
+          div
+          .style("display", "null")
           d3.select(this)
           .style("opacity",1)
           })
