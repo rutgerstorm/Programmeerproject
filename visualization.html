@@ -32,19 +32,18 @@
     <body>
       <style>
       div.tooltip {
-      position: absolute;
-      text-align: center;
-      width: 60px;
-      height: 28px;
-      padding: 2px;
-      font: 12px sans-serif;
-      background: lightsteelblue;
-      border: 0px;
-      border-radius: 8px;
-      pointer-events: none;
-  }
+  /* position: absolute; */
+  text-align: center;
+  width: 60px;
+  height: 12px;
+  padding: 8px;
+  margin-top: -20px;
+  font: 10px sans-serif;
+  background: #FFDEAD;
+  pointer-events: none;
+}
   </style>
-  
+
       <p>Visualization will be shown down here </p>
         <script type="text/javascript">
         </script>
@@ -54,7 +53,7 @@
         <div class="">
       <div class="dropdown">
         <div class="dropdown-content">
-          <select>
+          <select onchange="dropdown(this.options[this.selectedIndex].value)">
       <option value="None">-- Select Country --</option>
       <option value="Afghanistan">Afghanistan</option>
       <option value="Albania">Albania</option>

@@ -105,6 +105,7 @@ svg.append("g")
       .style("opacity",0.8)
       .style("fill", "rgb(38, 38, 38)")
       .on("click", function(g){
+        console.log(g.properties.name);
         makeLineChart(g.properties.name)
       })
       // .on("click", function(g){
