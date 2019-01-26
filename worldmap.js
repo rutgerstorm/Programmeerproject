@@ -107,6 +107,8 @@ svg.append("g")
       .on("click", function(g){
         console.log(g.properties.name);
         makeLineChart(g.properties.name)
+        createBar(2010, g.properties.name)
+        
       })
       // .on("click", function(g){
       //   countryBarchart(g.properties.name)

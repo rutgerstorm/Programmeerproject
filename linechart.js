@@ -1,5 +1,6 @@
 function dropdown(k){
   makeLineChart(k);
+  createBar(2010, k)
 }
 
 function makeLineChart(countryLine){
@@ -14,13 +15,14 @@ var countryDict = {}
 d3.json("data_nation.json").then(function(data){
 
 
-generalValues = Object.values(data)
-
-// year = Object.keys(data)
-// console.log(year)
-country = Object.keys((generalValues)[1])
-countryValues =  Object.values((generalValues)[1])
-// console.log(year)
+// generalValues = Object.values(data)
+//
+// // year = Object.keys(data)
+// // console.log(year)
+// countrys = Object.keys((generalValues)[1])
+// console.log(countrys)
+// countryValues =  Object.values((generalValues)[1])
+// // console.log(year)
 // console.log(country)
 // console.log(Object.values(countryValues))
 
@@ -32,14 +34,16 @@ for (year in data){
 
   obj["Year"] = year;
   obj["Value"] = (+data[year][countryLine])*3,667
-  console.log(obj["Value"]);
+  // console.log(obj["Value"]);
 
   lijst.push(obj)
+
 }
 }
-console.log(lijst)
-console.log(d3.max(lijst, function(d){return d["Value"]}))
-console.log(d3.min(lijst, function(d){return d["Value"]}))
+
+// console.log(lijst)
+// console.log(d3.max(lijst, function(d){return d["Value"]}))
+// console.log(d3.min(lijst, function(d){return d["Value"]}))
 // for (i = 0; i < country.length; i++)
 // {
 //   for (j = 0; j < country.length; j++)
@@ -120,9 +124,10 @@ console.log(d3.min(lijst, function(d){return d["Value"]}))
       // .style("font-size", "11px")
       // .style("font-family", "sans-serif");
 
-      div = svg.append("text").attr("x", 50).attr("y", 50)
+      div = svg.append("text").attr("x", 50).attr("y", 50).attr("class", "tooltip")
 
   svg.append("text")
+        .attr("class", "axisUnit")
         .attr("transform", "translate(450, 25)")
         .style("text-anchor", "end")
         .style("font-family", "sans-serif")
@@ -130,6 +135,7 @@ console.log(d3.min(lijst, function(d){return d["Value"]}))
         .text("CO2 emission in Thousand Metric Tons (1000 Ton)");
 
   svg.append("text")
+        .attr("class", "axisUnit")
         .attr("transform", "translate(600, 390)")
         .style("text-anchor", "end")
         .style("font-family", "sans-serif")
@@ -137,12 +143,13 @@ console.log(d3.min(lijst, function(d){return d["Value"]}))
         .text("Year");
 
   svg.append("text")
-          .attr("x",-340)
+          .attr("class", "axisUnit")
+          .attr("x",-350)
           .attr("y", 20)
           .attr("transform", "rotate(-90)")
           .style("text-anchor", "end")
           .style("font-family", "sans-serif")
-          .style("font-size", "13px")
+          .style("font-size", "11px")
           .text("Value in Thousand")
           .text("1000 Tons");
 
@@ -169,11 +176,17 @@ console.log(d3.min(lijst, function(d){return d["Value"]}))
      .attr("id", "line")
      // .attr("d", line);
 
+
   svg.select("#line")
     .datum(lijst)
     .transition()
       .duration(1000)
       .attr("d", line);
+
+  svg.select(".axisUnit")
+    .transition()
+    .duration(1000)
+
 
   svg.select(".yAxis")
     .transition()
@@ -229,7 +242,7 @@ console.log(d3.min(lijst, function(d){return d["Value"]}))
         .attr("cx", (lijst, function(d)
         {return xScaleData(d["Year"]) - 8  }))
         .attr("cy", (lijst, function(d)
-        { console.log(d);
+        {
           return (yScaleData(d["Value"]))}))
         .on("click",(function(d){
           createBar(d["Year"], countryLine)

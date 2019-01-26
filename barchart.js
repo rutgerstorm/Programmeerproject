@@ -2,7 +2,7 @@
 sectors = ["Transport", "Forestry","Energy","Other sources","Agriculture, Land Use & Forestry","Waste","Residential & commercial","Industry","Agriculture"]
 function createBar(year, country){
 console.log(year)
-// country = country.toLowerCase();
+country = country.toUpperCase();
 // country = country.charAt(0).toUpperCase() + country.slice(1)
 console.log(country)
 // console.log(countryBar);
@@ -109,13 +109,21 @@ function makeBar(){
       bar.enter()
       .append("rect")
       .attr("x", function(d, i) { return xScale(sectors[i]) + (1.5 *margin); })
-      .attr("fill", function(d) {
-       return "rgb(0, 0, " + (d * 0.001) + ")"
-     })
+     //  .attr("fill", function(d) {
+     //   return "rgb(0, 0, " + (d * 0.001) + ")"
+     // })
       .on('mouseover',function(d){
+        // div
+        // // .attr("x",
+        // //   (xScale(sectors[d]) + (1.5 *margin)))
+        // // .attr("y",
+        // //   (yScale(d) + (0.5 * margin) - 25));
+        // .style("display", "true")
+        // .text(d);
         d3.select(this)
           .style("fill", "rgb(255, 170, 0)")
        })
+
      .on('mouseout',function(d){
        d3.select(this)
          .style("fill", function(d) {
@@ -132,6 +140,9 @@ function makeBar(){
         .attr("height", function(d) {
           return h - (margin) - yScale(d);
          })
+       .attr("fill", function(d) {
+         return "rgb(0, 0, " + (d * 0.001) + ")"
+       })
 
      function createAxis(){
       // Create the y axis
