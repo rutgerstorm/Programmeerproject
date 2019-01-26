@@ -13,7 +13,7 @@ var countryDict = {}
 
 
 d3.json("data_nation.json").then(function(data){
-
+console.log(data)
 
 // generalValues = Object.values(data)
 //
