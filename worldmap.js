@@ -3,10 +3,12 @@
 window.onload = function() {
   var worldmap = "world_countriesTest.json"
   var request = [d3.json(worldmap)];
-  var countryColor = ["0, 0, 255", "255, 204, 0"]
   var color = d3.scaleOrdinal()
-  .range("blue", "red")
-  .domain("Yes", "No");
+    .domain("Yes", "No")
+    .range("blue", "red");
+
+
+
 
   // Transform datasets through transform functions
   Promise.all(request).then(function(response){
@@ -91,6 +93,10 @@ d3.json("data_agreement.json").then(function(data)
   //   x = 'rgb(244, 83, 65)'
   // }
 
+  var body = d3.select("g")
+  for (var i = 0; i < color.length; i++)
+
+
 
 svg.append("g")
       .attr("class", "countries")
@@ -102,6 +108,7 @@ svg.append("g")
       .style('stroke', 'white')
       .style('stroke-width', 1.5)
       .style("opacity",0.8)
+      // .style("fill", function(d) { return color(d); })
       .style("fill", "rgb(38, 38, 38)")
       .on("click", function(g){
         console.log(g.properties.name);

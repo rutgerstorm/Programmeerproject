@@ -21,6 +21,10 @@ body{
   margin-left: 15px;
 }
 
+#Link1:hover{
+  color:rgb(102, 153, 153)
+}
+
 
 
 #frontTitle {
