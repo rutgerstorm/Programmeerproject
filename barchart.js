@@ -66,7 +66,8 @@ function makeBar(){
       .default(new Date(1998, 10, 3))
       .on('onchange', val => {
         d3.select('p#value-time').text(d3.timeFormat('%Y')(val));
-        console.log(d3.timeFormat('%Y')(val));
+        var sliderYear = (d3.timeFormat('%Y')(val));
+        createBar(sliderYear, country)
       });
 
     var gTime = d3
@@ -77,7 +78,7 @@ function makeBar(){
       .append('g')
       .attr('transform', 'translate(30,30)');
 
-    gTime.call(sliderTime);
+    // gTime.call(sliderTime);
 
     d3.select('p#value-time').text(d3.timeFormat('%Y')(sliderTime.value()));
 
@@ -172,10 +173,11 @@ function makeBar(){
               .call(d3.axisBottom(xScale));
     }
     createAxis()
-
+function slider(){
     var dataTime = d3.range(0, 10).map(function(d) {
     return new Date(1995 + d, 10, 3);
   });
+
 
   var sliderTime = d3
     .sliderBottom()
@@ -190,7 +192,7 @@ function makeBar(){
       d3.select('p#value-time').text(d3.timeFormat('%Y')(val));
     });
 
-
+}
    }
 
  })

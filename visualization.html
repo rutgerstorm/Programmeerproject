@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <h3>Rutger Storm, 12444049</h3>
-        <h2>Visualization</h2>
+      <div id="colorbar">
+        <h3 id="personalinformation">Rutger Storm, 12444049</h3>
         <title>Rutger Storm</title>
          <nav class="navbar navbar-expand-lg navbar-light bg-light">
              <span class="navbar-toggler-icon"></span>
            <div class="collapse navbar-collapse" id="navbarNav">
              <ul class="navbar-nav">
                <li class="nav-item">
-                 <a href="index.html">Homepage</a>
+                 <a id="homeButton" href="index.html">Homepage</a>
                <li class="nav-item active">
-                 <a class="nav-link" href="index.html">Visualization <span class="sr-only">(current)</span></a>
+                 <a id="visualizationButton" class="nav-link" href="index.html">Visualization Page</a>
                </li>
              </ul>
            </div>
+         </div>
         <meta charset="utf-8">
         <script type="text/javascript"
         <script src="d3/d3.min.js"></script>
@@ -23,10 +24,17 @@
         <script src="d3/datamaps.world.min.js"></script>
         <script src="programmeerproject.js"></script>
           <script src="all.js"></script>
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-12">
         <script src="worldmap.js"></script>
+              </div>
+            </div>
+          </div>
+
         <script src="linechart.js"></script>
         <script src="barchart.js"></script>
-
+        <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous"> -->
         <link rel="stylesheet" type="text/css" href="programmeerproject.css">
     </head>
 
@@ -45,12 +53,11 @@
 }
   </style> -->
 
-      <p>Visualization will be shown down here </p>
         <script type="text/javascript">
         </script>
         <svg width="0" height="0" id="Worldmap"></svg>
-        <svg width="0" height="0" id="Linechart"></svg>
-        <svg width="0" height="0" id="Barchart"></svg>
+        <svg width="0" height="0" id="Linechart"transform="translate(37 0)"></svg>
+        <svg width="0" height="0" id="Barchart" transform="translate(180 0)"></svg>
         <div class="">
       <div class="dropdown">
         <div class="dropdown-content">
@@ -301,5 +308,8 @@
           <div class="col-sm-2"><p id="value-time"></p></div>
           <div class="col-sm"><div id="slider-time"></div></div>
         </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     </body>
 </html>

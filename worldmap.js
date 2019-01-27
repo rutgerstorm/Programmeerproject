@@ -21,16 +21,15 @@ window.onload = function() {
 // })
 
 // Variables for the svg
-var w = 750;
-var h = 400;
-var barPadding = 2;
+var w = 1750;
+var h = 800;
 var margin = 50;
 
 var path = d3.geoPath();
 // console.log(path);
 
 var projection = d3.geoMercator()
-                  .scale(121)
+                  .scale(180)
                   .translate( [w / 2, h / 1.5]);
 
 var path = d3.geoPath().projection(projection);
@@ -108,7 +107,7 @@ svg.append("g")
         console.log(g.properties.name);
         makeLineChart(g.properties.name)
         createBar(2010, g.properties.name)
-        
+
       })
       // .on("click", function(g){
       //   countryBarchart(g.properties.name)
