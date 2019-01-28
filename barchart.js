@@ -13,6 +13,7 @@ var dataDict = {}
 d3.json("data_piechart.json").then(function(dataBar){
 
   data = (dataBar[year][country]).map(Math.abs)
+  console.log(data);
   makeBar()
 
 
@@ -36,21 +37,34 @@ function makeBar(){
     .attr("height", h + 5);
 
     svg.append("text")
+          .attr("id", "xAxisUnit")
           .attr("transform", "translate(630, 410)")
           .style("text-anchor", "end")
           .style("font-family", "sans-serif")
-          .style("font-size", "10px")
-          .text("Sector");
+          .style("font-size", "11px")
+
 
     svg.append("text")
+            .attr("id", "yAxisUnit")
             .attr("x",-335)
             .attr("y", 20)
             .attr("transform", "rotate(-90)")
             .style("text-anchor", "end")
             .style("font-family", "sans-serif")
             .style("font-size", "13px")
-            .text("Value in Thousand")
-            .text("1000 Tons");
+
+
+
+  svg.select("#xAxisUnit")
+    .transition()
+    .duration(1000)
+      .text("Sector");
+
+  svg.select("#yAxisUnit")
+    .transition()
+    .duration(1000)
+      .text("1000 Tons");
+
 
 
     var dataTime = d3.range(0, 11).map(function(d) {
@@ -63,7 +77,7 @@ function makeBar(){
 
     if (sliderPresent){
       sliderPresent = false
-
+// function slider(year, country){
       var sliderTime = d3
         .sliderBottom()
         .min(d3.min(dataTime))
@@ -76,7 +90,8 @@ function makeBar(){
         .on('onchange', val => {
           d3.select('p#value-time').text(d3.timeFormat('%Y')(val));
           var sliderYear = (d3.timeFormat('%Y')(val));
-          createBar(sliderYear, country)
+          createBar(sliderYear, country);
+          createYear(sliderYear);
         });
 
       var gTime = d3
@@ -91,6 +106,8 @@ function makeBar(){
 
       d3.select('p#value-time').text(d3.timeFormat('%Y')(sliderTime.value()));
     }
+  // }
+  // slider()
 
   // Adjusting the xScale
   var xScale = d3.scaleBand()
@@ -119,9 +136,7 @@ function makeBar(){
       bar.enter()
       .append("rect")
       .attr("x", function(d, i) { return xScale(sectors[i]) + (1.5 *margin); })
-     //  .attr("fill", function(d) {
-     //   return "rgb(0, 0, " + (d * 0.001) + ")"
-     // })
+
       .on('mouseover',function(d){
         // div
         // // .attr("x",
@@ -137,7 +152,7 @@ function makeBar(){
      .on('mouseout',function(d){
        d3.select(this)
          .style("fill", function(d) {
-          return "rgb(0, 0, " + (d * 0.001) + ")"
+          return "rgb(0, 0, " + (d / 1000) + ")"
       })
       })
       .merge(bar)
@@ -151,7 +166,7 @@ function makeBar(){
           return h - (margin) - yScale(d);
          })
        .attr("fill", function(d) {
-         return "rgb(0, 0, " + (d * 0.001) + ")"
+         return "rgb(0, 0, " + (d / 1000) + ")"
        })
 
      function createAxis(){

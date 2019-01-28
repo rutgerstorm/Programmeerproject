@@ -35,7 +35,7 @@ for (year in data){
 
 
   var margin = 50
-  var width = 750 
+  var width = 750
   var height = 400
 
 
@@ -73,33 +73,36 @@ for (year in data){
       // .style("font-size", "11px")
       // .style("font-family", "sans-serif");
 
-      div = svg.append("text").attr("x", 50).attr("y", 50).attr("class", "tooltip")
+      var div = svg.append("text")
+        .attr("x", 50)
+        .attr("y", 50)
+        .attr("class", "tooltip")
 
   svg.append("text")
-        .attr("class", "axisUnit")
+        .attr("id", "graphTitle")
         .attr("transform", "translate(450, 25)")
         .style("text-anchor", "end")
         .style("font-family", "sans-serif")
         .style("font-size", "17px")
-        .text("CO2 emission in Thousand Metric Tons (1000 Ton)");
+
 
   svg.append("text")
-        .attr("class", "axisUnit")
+        .attr("id", "xAxisUnit")
         .attr("transform", "translate(600, 390)")
         .style("text-anchor", "end")
         .style("font-family", "sans-serif")
         .style("font-size", "13px")
-        .text("Year");
+
 
   svg.append("text")
-          .attr("class", "axisUnit")
+          .attr("id", "yAxisUnit")
           .attr("x",-355)
           .attr("y", 10)
           .attr("transform", "rotate(-90)")
           .style("text-anchor", "end")
           .style("font-family", "sans-serif")
           .style("font-size", "11px")
-          .text("1000 Tons");
+
 
 
     svg.append("g")
@@ -115,7 +118,6 @@ for (year in data){
 // linegraph = function(country){
     svg.append("path")
       // .datum(lijst)
-      .attr("class", "line")
       .attr("fill", "none")
      .attr("stroke", "rgb(102, 140, 255)")
      .attr("stroke-linejoin", "round")
@@ -131,9 +133,20 @@ for (year in data){
       .duration(1000)
       .attr("d", line);
 
-  svg.select(".axisUnit")
+  svg.select("#graphTitle")
     .transition()
     .duration(1000)
+      .text("CO2 emission in Thousand Metric Tons (1000 Ton)");
+
+  svg.select("#xAxisUnit")
+    .transition()
+    .duration(1000)
+      .text("Year");
+
+  svg.select("#yAxisUnit")
+    .transition()
+    .duration(1000)
+      .text("1000 Tons");
 
 
   svg.select(".yAxis")
@@ -176,6 +189,7 @@ for (year in data){
 
         .on("click",(function(d){
           createBar(d["Year"], this.getAttribute("class"))
+          createYear(d["Year"])
         }))
 
 
@@ -197,64 +211,7 @@ for (year in data){
 
         scatter.exit().remove();
 
-        // scatter.transition()        .attr("cx", (lijst, function(d)
-        //         {return xScaleData(d["Year"]);  }))
-        //         .attr("cy", (lijst, function(d)
-        //         {return (yScaleData(d["Value"]))}))
-        //         .on("click",(function(d){
-        //   console.log(d);
-        //   console.log(countryLine);
-        //   createBar(d["Year"], countryLine)
-        // }))
-
-
-
-        //
-        // svg.selectAll("circle")
-        //    .data(lijst)
-        //    .enter()
-        //    .append("circle")
-        //    .attr("cx", (lijst, function(d)
-        //    {return xScaleData(d["Year"]);  }))
-        //    .attr("cy", (lijst, function(d)
-        //    {return (yScaleData(d["Value"]))}))
-        //    .attr("r", 5)
-        //    .on('mouseover',function(d){
-        //      d3.select(this)
-        //        .style("opacity",0.4)
-        //        .text(function(d, i) { return d["Value"]; })
-        //    })
-        //    .on('mouseout',function(d){
-        //      d3.select(this)
-        //      .style("opacity",1)
-        //    })
-        //    .on("click",(lijst, function(d){
-        //      createBar(d["Year"], countryLine)
-        //    }))
-
-
-
-     // g.selectAll("circle").data(data).enter()
-     //   .append("circle")
-     //    .attr("cx", function(d) { return x(d.date); })
-     //    .attr("cy", function(d) { return y(d.value); })
-     //    .attr("r", function(d, i) { return 5; })
-     //    .attr("id", function(d) { return d.id; })
-     //    .style("fill", "#fcb0b5")
-     // function test(x){
-     //   linegraph(x)
-     // }
 
 
 })
 }
-  //
-  // var x = d3.scaleTime().rangeRound([0, w]);
-  //
-  // var y = d3.scaleLinear().rangeRound([h, 0]);
-
-  // var line = d3.line()
-  //   .x(function(d) { return x(d.date)})
-  //   .y(function(d) { return y(d.value)})
-  //   x.domain(d3.extent(data, function(d) { return d.date }));
-  //   y.domain(d3.extent(data, function(d) { return d.value }));

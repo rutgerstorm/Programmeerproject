@@ -10,15 +10,7 @@ window.onload = function() {
 
   // Transform datasets through transform functions
   Promise.all(request).then(function(response){
-    // console.log(response[0].features);
-    // var data = transformResponse(response[0]);
-    // console.log(data)
-// d3.json("data_agreement.json").then(function(data)
-// {
-//   for (var i = 0; i < 200; i++) {
-//     console.log(i)
-//   }
-// })
+
 
 // Variables for the svg
 var w = 1750;
@@ -63,16 +55,42 @@ var svg = d3.select("#Worldmap")
     }
   })
 
-function createTitle(country, year){
+function createTitle(country){
   svg.append("text")
-          .attr("x",1300)
-          .attr("y", 750)
+          .attr("x",1200)
+          .attr("y", 770)
+          .attr("id", "Title")
           .style("text-anchor", "end")
-          .style("font-family", "sans-serif")
-          .style("font-size", "25px")
-          .text(country, year);
+          .style("font-family", "Sans-serif")
+          .style("font-size", "35px")
+          .style("Opacity", 0.6)
+  svg.select("#Title")
+    .transition()
+      .duration(1000)
+      .text(country,+ ",")
+
 }
 createTitle()
+
+function createYear(year){
+  svg.append("text")
+          .attr("x",1290)
+          .attr("y", 770)
+          .attr("id", "Year")
+          .style("text-anchor", "end")
+          .style("font-family", "Hervetica")
+          .style("font-family", "Sans-serif")
+          .style("font-size", "35px")
+          .style("Opacity", 0.6)
+  svg.select("#Year")
+    .transition()
+      .duration(1000)
+      .text(year)
+
+}
+createYear()
+//
+
 
 svg.append("g")
       .attr("class", "countries")
@@ -96,14 +114,16 @@ svg.append("g")
     })
       .style('stroke', 'white')
       .style('stroke-width', 1.5)
-      .style("opacity",0.8)
+      .style("opacity",1)
       // .style("fill", function(d) { return color(d); })
       // .style("fill", "rgb(38, 38, 38)")
       .on("click", function(g){
         console.log(g.properties.name);
-        makeLineChart(g.properties.name)
-        createBar(2010, g.properties.name)
-        createTitle(g.properties.name, 2010)
+        makeLineChart(g.properties.name);
+        createBar(2010, g.properties.name);
+        createTitle(g.properties.name);
+        createYear(2010);
+        // slider(2010, g.properties.name);
       })
 
 
@@ -123,6 +143,7 @@ svg.append("g")
           // tip.show(d);
 
           d3.select(this)
+          .style("opacity", 1)
           //   .attr("fill", function(d){
           //     console.log(d.properties.Paris);
           //     if (d.properties.Paris == "No"){
