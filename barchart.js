@@ -1,4 +1,5 @@
 // function countryBarchart(countryBar){
+sliderPresent = true;
 sectors = ["Transport", "Forestry","Energy","Other sources","Agriculture, Land Use & Forestry","Waste","Residential & commercial","Industry","Agriculture"]
 function createBar(year, country){
 console.log(year)
@@ -15,12 +16,12 @@ d3.json("data_piechart.json").then(function(dataBar){
   makeBar()
 
 
-  console.log(data)
+
 
 min = d3.min(data, function(d){return d;  })
 max = d3.max(data, function(d){return d;  })
-console.log(min)
-console.log(max)
+// console.log(min)
+// console.log(max)
 
 
 function makeBar(){
@@ -42,7 +43,7 @@ function makeBar(){
           .text("Sector");
 
     svg.append("text")
-            .attr("x",-320)
+            .attr("x",-335)
             .attr("y", 20)
             .attr("transform", "rotate(-90)")
             .style("text-anchor", "end")
@@ -51,37 +52,45 @@ function makeBar(){
             .text("Value in Thousand")
             .text("1000 Tons");
 
-    var dataTime = d3.range(0, 10).map(function(d) {
+
+    var dataTime = d3.range(0, 11).map(function(d) {
       return new Date(2000 + d, 11, 3);
     });
 
-    var sliderTime = d3
-      .sliderBottom()
-      .min(d3.min(dataTime))
-      .max(d3.max(dataTime))
-      .step(1000 * 60 * 60 * 24 * 365)
-      .width(300)
-      .tickFormat(d3.timeFormat('%Y'))
-      .tickValues(dataTime)
-      .default(new Date(1998, 10, 3))
-      .on('onchange', val => {
-        d3.select('p#value-time').text(d3.timeFormat('%Y')(val));
-        var sliderYear = (d3.timeFormat('%Y')(val));
-        createBar(sliderYear, country)
-      });
 
-    var gTime = d3
-      .select('div#slider-time')
-      .append('svg')
-      .attr('width', 500)
-      .attr('height', 100)
-      .append('g')
-      .attr('transform', 'translate(30,30)');
 
-    // gTime.call(sliderTime);
 
-    d3.select('p#value-time').text(d3.timeFormat('%Y')(sliderTime.value()));
 
+    if (sliderPresent){
+      sliderPresent = false
+
+      var sliderTime = d3
+        .sliderBottom()
+        .min(d3.min(dataTime))
+        .max(d3.max(dataTime))
+        .step(1000 * 60 * 60 * 24 * 365)
+        .width(300)
+        .tickFormat(d3.timeFormat('%Y'))
+        .tickValues(dataTime)
+        .default(new Date(1998, 10, 3))
+        .on('onchange', val => {
+          d3.select('p#value-time').text(d3.timeFormat('%Y')(val));
+          var sliderYear = (d3.timeFormat('%Y')(val));
+          createBar(sliderYear, country)
+        });
+
+      var gTime = d3
+        .select('div#slider-time')
+        .append('svg')
+        .attr('width', 500)
+        .attr('height', 100)
+        .append('g')
+        .attr('transform', 'translate(30,30)');
+
+      gTime.call(sliderTime);
+
+      d3.select('p#value-time').text(d3.timeFormat('%Y')(sliderTime.value()));
+    }
 
   // Adjusting the xScale
   var xScale = d3.scaleBand()
@@ -104,7 +113,7 @@ function makeBar(){
 //
 //
   // Create the barchart
-  console.log(data);
+  // console.log(data);
   var bar = svg.selectAll("rect")
             .data(data);
       bar.enter()

@@ -2,10 +2,8 @@
 
 window.onload = function() {
   var worldmap = "world_countriesTest.json"
-  var request = [d3.json(worldmap)];
-  var color = d3.scaleOrdinal()
-    .domain("Yes", "No")
-    .range("blue", "red");
+  var request = [d3.json(worldmap), d3.json("data_agreement.json")];
+
 
 
 
@@ -42,8 +40,8 @@ var svg = d3.select("#Worldmap")
 
 
 
-d3.json("data_agreement.json").then(function(data)
-{
+// d3.json("data_agreement.json").then(function(data)
+// {
   // console.log(f.properties.name)
   response[0].features.forEach(function(f)
   {
@@ -51,9 +49,9 @@ d3.json("data_agreement.json").then(function(data)
     {
       // console.log(Object.keys(data)[i])
       // console.log(f.properties.name)
-      if (f.properties.name.includes(Object.keys(data)[i]))
+      if (f.properties.name.includes(Object.keys(response[1])[i]))
       {
-        if ((Object.values(data)[i]) == "Yes")
+        if ((Object.values(response[1])[i]) == "Yes")
         {
           f.properties["Paris"] = "Yes";
         }
@@ -64,39 +62,17 @@ d3.json("data_agreement.json").then(function(data)
       }
     }
   })
-})
 
-
-
-// response[0].features.forEach(function(f){
-//   // console.log(f.properties.name)
-//   for (var i = 0; i < 200; i++) {
-//     if (Object.keys((data)[i]).includes(f.properties.name)){
-//     console.log(i)
-//   }
-//     }
-//   })
-
-
-  // if "Yes" in row
-  //   f.properties["Paris"] = "Yes";
-  // else
-  //   f.properties["Paris"] = "No";
-  //
-
-  // if (f.properties["Paris"] = "Yes")
-  // {
-  //   var x = 'rgb(66, 134, 244)'
-  // }
-  // else
-  // {
-  //   x = 'rgb(244, 83, 65)'
-  // }
-
-  var body = d3.select("g")
-  for (var i = 0; i < color.length; i++)
-
-
+function createTitle(country, year){
+  svg.append("text")
+          .attr("x",1300)
+          .attr("y", 750)
+          .style("text-anchor", "end")
+          .style("font-family", "sans-serif")
+          .style("font-size", "25px")
+          .text(country, year);
+}
+createTitle()
 
 svg.append("g")
       .attr("class", "countries")
@@ -105,48 +81,30 @@ svg.append("g")
       .enter()
       .append("path")
       .attr("d", path)
+      .attr("fill", function(d){
+        if (d.properties["Paris"] == "No"){
+          x = "rgb(204, 51, 51)"
+          return x;
+        }
+
+        else if  (d.properties["Paris"] == "Yes"){
+          y = "rgb(57, 172, 115)"
+        return y;
+      } else {
+        return "black";
+      }
+    })
       .style('stroke', 'white')
       .style('stroke-width', 1.5)
       .style("opacity",0.8)
       // .style("fill", function(d) { return color(d); })
-      .style("fill", "rgb(38, 38, 38)")
+      // .style("fill", "rgb(38, 38, 38)")
       .on("click", function(g){
         console.log(g.properties.name);
         makeLineChart(g.properties.name)
         createBar(2010, g.properties.name)
-
+        createTitle(g.properties.name, 2010)
       })
-      // .on("click", function(g){
-      //   countryBarchart(g.properties.name)
-      // })
-      // .on("click", function(g){
-      //   makeBarChart(g.properties.name)
-      // })
-      // .attr("fill", function(d) {
-      //      if (f.properties["Paris"] = "Yes")
-      //      {
-      //        return {'rgb(66, 134, 244)'}
-      //      }
-      //      else {
-      //        return {"blue"}
-      //      }
-      //      })
-      // .attr("fill",
-      //   if (f.properties["Paris"] = "Yes")
-      // {
-      //   return 'rgb(66, 134, 244)'
-      // }
-      // else
-      // {
-      //   return 'rgb(244, 83, 65)'
-      // }
-
-  //
-  //     .attr("fill", function(d){
-  //
-  //   return "rgb(" + countryColor[d] + ")"
-  // })
-
 
 
       // tooltips
@@ -156,8 +114,8 @@ svg.append("g")
           // tip.show(d);
 
           d3.select(this)
-            // .style("opacity", 0.8)
-            .style('fill', 'rgb(51, 153, 102)')
+            .style("opacity", 10)
+            // .style('fill', "rgb(255, 255, 255)")
             .style("stroke","white")
             .style("stroke-width",2);
         })
@@ -165,9 +123,52 @@ svg.append("g")
           // tip.show(d);
 
           d3.select(this)
-            .style("fill", "rgb(38, 38, 38)")
+          //   .attr("fill", function(d){
+          //     console.log(d.properties.Paris);
+          //     if (d.properties.Paris == "No"){
+          //       x = "rgb(204, 0, 0)"
+          //       return x;
+          //     }
+          //
+          //     else if  (d.properties["Paris"] == "Yes"){
+          //       y = "rgb(0, 102, 102)"
+          //     return y;
+          //   } else {
+          //     return "black";
+          //   }
+          // })
             .style("stroke","white")
             .style("stroke-width",0.4);
+
         })
+        // function createLegend() {
+        //   legend = svg.selectAll(".legend")
+        //          .data(color)
+        //          .enter()
+        //          .append("g")
+        //          .attr("class" , "legend")
+        //          .attr("transform", function(d, i) {
+        //            return "translate(0," + i * 20 + ")";
+        //          })
+        //
+        //     legend.append('rect')
+        //       .attr("x", 430)
+        //       .attr("y", 220)
+        //       .attr("width", 10)
+        //       .attr("height", 10)
+        //       .attr("fill", function(d, i){
+        //         return "blue"
+        //       });
+        //
+        //     legend.append("text")
+        //       .attr("x", 450)
+        //       .attr("y", 500)
+        //       .text(function(d){
+        //         return d;
+        //       })
+        // }
+        // createLegend()
+
+
       })
     }

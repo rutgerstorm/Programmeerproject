@@ -13,18 +13,7 @@ var countryDict = {}
 
 
 d3.json("data_nation.json").then(function(data){
-console.log(data)
 
-// generalValues = Object.values(data)
-//
-// // year = Object.keys(data)
-// // console.log(year)
-// countrys = Object.keys((generalValues)[1])
-// console.log(countrys)
-// countryValues =  Object.values((generalValues)[1])
-// // console.log(year)
-// console.log(country)
-// console.log(Object.values(countryValues))
 
 lijst = []
 
@@ -41,52 +30,12 @@ for (year in data){
 }
 }
 
-// console.log(lijst)
-// console.log(d3.max(lijst, function(d){return d["Value"]}))
-// console.log(d3.min(lijst, function(d){return d["Value"]}))
-// for (i = 0; i < country.length; i++)
-// {
-//   for (j = 0; j < country.length; j++)
-//   {
-//       for (x = 0; x < year.length; x++)
-//       {
-//
-//         countryDict[(year[x])] = (Object.values((countryValues)[x])[j])
-//         dataDict[country[i]] = countryDict
-//     // console.log(countryDict)
-//     // regionDict[(regions[x])] = ((Object.values(regionValues[i])[x]));
-//     // dataDict[country[i] = generalValues[i]
-//
-//   // // console.log(dataDict)
-//     // console.log(Object.values((countryValues)[x])[i])
-//       }
-//   // console.log(year[x])
-//   // console.log(country[i])
-//
-//   }
-//   dataDict[country[i]] = countryDict
-// }
-// console.log(dataDict)
-
-
-// })
-// creatingData()
-
-
-  //Width and height from the SVG
-// function update(countryLine){
-//   .on("click", function(g){
-//     makeLineChart(g.properties.name)
-//   })
-// }
-//
-
   var width = 750;
   var height = 400;
 
 
   var margin = 50
-  var width = 750 // Use the window's width
+  var width = 750 
   var height = 400
 
 
@@ -144,13 +93,12 @@ for (year in data){
 
   svg.append("text")
           .attr("class", "axisUnit")
-          .attr("x",-350)
-          .attr("y", 20)
+          .attr("x",-355)
+          .attr("y", 10)
           .attr("transform", "rotate(-90)")
           .style("text-anchor", "end")
           .style("font-family", "sans-serif")
           .style("font-size", "11px")
-          .text("Value in Thousand")
           .text("1000 Tons");
 
 
@@ -198,7 +146,6 @@ for (year in data){
       .duration(1000)
       .call(d3.axisBottom(xScaleData));
 
-      console.log(lijst);
 
      var scatter = svg.selectAll("circle")
                     .data(lijst);
