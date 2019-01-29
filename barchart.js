@@ -35,9 +35,19 @@ function makeBar(){
   var barPadding = 2;
   var margin = 30
 
+
+
+
   var svg = d3.select("#Barchart")
     .attr("width", w + 5)
     .attr("height", h + 5);
+
+
+    var div = svg.append("text")
+      .attr("id", "tooltip")
+      .attr("x", 800)
+      .attr("y", 50)
+      .attr("class", "tooltip")
 
     svg.append("text")
           .attr("id", "graphTitle")
@@ -152,13 +162,12 @@ function makeBar(){
       .attr("x", function(d, i) { return xScale(sectors[i]) + (1.5 *margin); })
 
       .on('mouseover',function(d){
-        // div
-        // // .attr("x",
-        // //   (xScale(sectors[d]) + (1.5 *margin)))
-        // // .attr("y",
-        // //   (yScale(d) + (0.5 * margin) - 25));
-        // .style("display", "true")
-        // .text(d);
+        div
+        .attr("x",80)
+        .attr("y", 15)
+        .attr("font-family", "Helvetica")
+        .style("display", "true")
+        .text(d);
         d3.select(this)
           .style("fill", "rgb(255, 170, 0)")
        })

@@ -1,6 +1,9 @@
 function dropdown(k){
   makeLineChart(k);
-  createBar(2010, k)
+  createBar(2010, k);
+  d3.select("#Title")
+  .transition()
+  .text(k);
 }
 
 function makeLineChart(countryLine){
@@ -83,11 +86,11 @@ else {
       // .style("font-size", "11px")
       // .style("font-family", "sans-serif");
 
-      var div = svg.append("text")
-        .attr("id", "tooltip")
-        .attr("x", 50)
-        .attr("y", 50)
-        .attr("class", "tooltip")
+  var div = svg.append("text")
+    .attr("id", "tooltip")
+    .attr("x", 50)
+    .attr("y", 50)
+    .attr("class", "tooltip")
 
   svg.append("text")
         .attr("id", "graphTitle")
@@ -181,10 +184,9 @@ else {
         .attr("class", countryLine)
         .on('mouseover',function(d){
           div
-          .attr("x",
-            (xScaleData(d["Year"]) - 8))
-          .attr("y",
-            (yScaleData(d["Value"]) -20))
+          .attr("x",65)
+          .attr("y", 43)
+          .attr("font-family", "Helvetica")
           .style("display", "true")
           .text((Math.round(d.Value)));
           d3.select(this)
@@ -192,8 +194,6 @@ else {
         //     .text(function(d, i) { return d["Value"]; })
         })
         .on('mouseout',function(d){
-          div
-          .style("display", "null")
           d3.select(this)
           .style("opacity",1)
           })
