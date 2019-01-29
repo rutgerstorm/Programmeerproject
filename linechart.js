@@ -88,6 +88,7 @@ else {
 
   var div = svg.append("text")
     .attr("id", "tooltip")
+    .style("opacity", 0.8)
     .attr("x", 50)
     .attr("y", 50)
     .attr("class", "tooltip")

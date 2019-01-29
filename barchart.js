@@ -45,6 +45,7 @@ function makeBar(){
 
     var div = svg.append("text")
       .attr("id", "tooltip")
+      .style("opacity", 0.7)
       .attr("x", 800)
       .attr("y", 50)
       .attr("class", "tooltip")

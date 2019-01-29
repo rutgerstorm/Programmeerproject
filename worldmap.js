@@ -30,6 +30,13 @@ var svg = d3.select("#Worldmap")
             .attr("width", w + 5)
             .attr("height", h + 5);
 
+var tooltip = svg.append("text")
+  .attr("id", "tooltip")
+  .attr("x", 800)
+  .attr("y", 50)
+  .attr("class", "tooltip")
+
+
 
 
 // d3.json("data_agreement.json").then(function(data)
@@ -57,7 +64,7 @@ var svg = d3.select("#Worldmap")
 
 function createTitle(country){
   svg.append("text")
-          .attr("x",1200)
+          .attr("x",1000)
           .attr("y", 770)
           .attr("id", "Title")
           .style("text-anchor", "end")
@@ -74,7 +81,7 @@ createTitle()
 
 function createYear(year){
   svg.append("text")
-          .attr("x",1290)
+          .attr("x",1090)
           .attr("y", 770)
           .attr("id", "Year")
           .style("text-anchor", "end")
@@ -133,6 +140,14 @@ svg.append("g")
         .style('stroke-width', 0.25)
         .on('mouseover',function(d){
           // tip.show(d);
+          tooltip
+          // .attr("x",65)
+          // .attr("y", 43)
+          .attr("font-family", "Helvetica")
+          .style("display", "true")
+          .text(d.properties.name)
+          .style('left', (d3.eventPageX + 100) + 'px')
+          .style('top', (d3.eventPageY) + 'px')
 
           d3.select(this)
             .style("opacity", 0.6)
@@ -140,6 +155,7 @@ svg.append("g")
             .style("stroke","white")
             .style("stroke-width",2);
         })
+
         .on('mouseout',function(d){
           // tip.show(d);
 
