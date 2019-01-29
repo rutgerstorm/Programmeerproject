@@ -3,6 +3,10 @@ sliderPresent = true;
 sectors = ["Transport", "Forestry","Energy","Other sources","Agriculture, Land Use & Forestry","Waste","Residential & commercial","Industry","Agriculture"]
 function createBar(year, country){
 console.log(year)
+d3.select("#Year")
+.transition()
+.text(year)
+
 country = country.toUpperCase();
 // country = country.charAt(0).toUpperCase() + country.slice(1)
 console.log(country)
@@ -13,7 +17,6 @@ var dataDict = {}
 d3.json("data_piechart.json").then(function(dataBar){
 
   data = (dataBar[year][country]).map(Math.abs)
-  console.log(data);
   makeBar()
 
 
@@ -37,6 +40,13 @@ function makeBar(){
     .attr("height", h + 5);
 
     svg.append("text")
+          .attr("id", "graphTitle")
+          .attr("transform", "translate(530, 15)")
+          .style("text-anchor", "end")
+          .style("font-family", "sans-serif")
+          .style("font-size", "17px")
+
+    svg.append("text")
           .attr("id", "xAxisUnit")
           .attr("transform", "translate(630, 410)")
           .style("text-anchor", "end")
@@ -53,7 +63,10 @@ function makeBar(){
             .style("font-family", "sans-serif")
             .style("font-size", "13px")
 
-
+  svg.select("#graphTitle")
+    .transition()
+    .duration(1000)
+      .text("Total CO2 emission per sector");
 
   svg.select("#xAxisUnit")
     .transition()
@@ -88,10 +101,10 @@ function makeBar(){
         .tickValues(dataTime)
         .default(new Date(1998, 10, 3))
         .on('onchange', val => {
-          d3.select('p#value-time').text(d3.timeFormat('%Y')(val));
+          d3.select('p#value-time');
           var sliderYear = (d3.timeFormat('%Y')(val));
-          createBar(sliderYear, country);
-          createYear(sliderYear);
+          createBar(sliderYear, window.country);
+          // createYear(sliderYear);
         });
 
       var gTime = d3
@@ -99,12 +112,13 @@ function makeBar(){
         .append('svg')
         .attr('width', 500)
         .attr('height', 100)
+        .attr("id", "textYear")
         .append('g')
-        .attr('transform', 'translate(30,30)');
+        .attr('transform', 'translate(180,30)');
 
       gTime.call(sliderTime);
 
-      d3.select('p#value-time').text(d3.timeFormat('%Y')(sliderTime.value()));
+
     }
   // }
   // slider()
@@ -112,7 +126,7 @@ function makeBar(){
   // Adjusting the xScale
   var xScale = d3.scaleBand()
     .domain(["Transport", "Forestry","Energy","Other sources","Agriculture, Land Use & Forestry","Waste","Residential & commercial","Industry","Agriculture"])
-    .range([margin, w - margin]);
+    .range([margin, (w - (1.8*margin))]);
 
   // Adjusting the yScale
   var yScale = d3.scaleLinear()
@@ -197,26 +211,6 @@ function makeBar(){
               .call(d3.axisBottom(xScale));
     }
     createAxis()
-function slider(){
-    var dataTime = d3.range(0, 10).map(function(d) {
-    return new Date(1995 + d, 10, 3);
-  });
-
-
-  var sliderTime = d3
-    .sliderBottom()
-    .min(d3.min(dataTime))
-    .max(d3.max(dataTime))
-    .step(1000 * 60 * 60 * 24 * 365)
-    .width(300)
-    .tickFormat(d3.timeFormat('%Y'))
-    .tickValues(dataTime)
-    .default(new Date(1998, 10, 3))
-    .on('onchange', val => {
-      d3.select('p#value-time').text(d3.timeFormat('%Y')(val));
-    });
-
-}
    }
 
  })

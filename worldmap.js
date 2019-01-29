@@ -1,8 +1,8 @@
-
-
+window.country = "Canada";
 window.onload = function() {
   var worldmap = "world_countriesTest.json"
   var request = [d3.json(worldmap), d3.json("data_agreement.json")];
+
 
 
 
@@ -13,7 +13,7 @@ window.onload = function() {
 
 
 // Variables for the svg
-var w = 1750;
+var w = 1600;
 var h = 800;
 var margin = 50;
 
@@ -118,6 +118,7 @@ svg.append("g")
       // .style("fill", function(d) { return color(d); })
       // .style("fill", "rgb(38, 38, 38)")
       .on("click", function(g){
+        window.country = g.properties.name;
         console.log(g.properties.name);
         makeLineChart(g.properties.name);
         createBar(2010, g.properties.name);
@@ -134,7 +135,7 @@ svg.append("g")
           // tip.show(d);
 
           d3.select(this)
-            .style("opacity", 10)
+            .style("opacity", 0.6)
             // .style('fill', "rgb(255, 255, 255)")
             .style("stroke","white")
             .style("stroke-width",2);
