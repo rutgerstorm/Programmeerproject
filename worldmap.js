@@ -32,9 +32,13 @@ var svg = d3.select("#Worldmap")
 
 var tooltip = svg.append("text")
   .attr("id", "tooltip")
-  .attr("x", 800)
+  .attr("x", 1300)
   .attr("y", 50)
   .attr("class", "tooltip")
+  .style("text-anchor", "end")
+  .style("font-family", "Sans-serif")
+  .style("font-size", "35px")
+  .style("Opacity", 0.6)
 
 
 

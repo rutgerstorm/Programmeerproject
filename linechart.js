@@ -34,7 +34,7 @@ for (year in data){
 else {
   d3.select("#Year")
   .transition()
-  .text(country)
+  .text("")
   d3.select("#Title")
   .transition()
   .text("No data Available")
@@ -200,7 +200,18 @@ else {
           })
 
         .on("click",(function(d){
+          // if (year < 2011){
           createBar(d["Year"], this.getAttribute("class"))
+        // }
+        // else {
+        //     d3.select("#Year")
+        //     .transition()
+        //     .text()
+        //     d3.select("#Title")
+        //     .transition()
+        //     .text("No data Available")
+        //     createBar("")
+        // }
           // createYear(d["Year"])
         }))
 
