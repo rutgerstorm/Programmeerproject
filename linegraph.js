@@ -1,3 +1,11 @@
+/*
+Rutger Storm
+12444049
+Programmeerproject
+Linegraph
+*/
+
+// Function that gives the chosen country from the dropdown button
 function dropdown(k){
   makeLineChart(k);
   createBar(2010, k);
@@ -6,29 +14,27 @@ function dropdown(k){
   .text(k);
 }
 
+// The country on which is clicked comes in
 function makeLineChart(countryLine){
 
 
 var countryLine = countryLine.toUpperCase();
-console.log(countryLine);
-var dataDict = {}
-var countryDict = {}
+
+//  Loading in the data for through a json file
+d3.json("Json files/data_nation.json").then(function(data){
 
 
-d3.json("Json files"/"data_nation.json").then(function(data){
-console.log(data)
-
-lijst = []
+dataList = []
 
 for (year in data){
   if (!isNaN(+data[year][countryLine])){
-  obj = {}
+  dataDict = {}
 
-  obj["Year"] = year;
-  obj["Value"] = ((+data[year][countryLine]) * 3.667)
-  // console.log(obj["Value"]);
+  dataDict["Year"] = year;
+  dataDict["Value"] = ((+data[year][countryLine]) * 3.667)
 
-  lijst.push(obj)
+
+  dataList.push(dataDict)
 
 }
 else {
@@ -43,14 +49,9 @@ else {
 }
 
 
-  var width = 750;
-  var height = 400;
-
-
   var margin = 50
   var width = 700
   var height = 400
-
 
 
   var xScaleData = d3.scaleBand()
@@ -58,7 +59,7 @@ else {
       .range([margin + 25, width - margin])
 
   var yScaleData = d3.scaleLinear()
-      .domain([(d3.max(lijst, function(d){return d["Value"]})), d3.min(lijst, function(d){return d["Value"]/1.05})]) // input
+      .domain([(d3.max(dataList, function(d){return d["Value"]})), d3.min(dataList, function(d){return d["Value"]/1.05})]) // input
       .range([margin, height - margin])
 
 
@@ -69,22 +70,12 @@ else {
 
 
       // x.domain(d3.extent(, function(d) { return +d}));
-      // y.domain(d3.extent(Object.values(countryDict), function(d) { return +d }));
+      // y.domain(d3.extent(dataDictect.values(countryDict), function(d) { return +d }));
 
   var svg = d3.select("#Linechart")
     .attr("width", width)
     .attr("height", height);
-    // .selectAll("path")
-    // .selectAll("g")
-    // .selectAll("circle")
-    // .data(lijst);
-  // var div = svg
-  //     .append("g")
-      // .style("display", "true")
-      // .attr("class", "tooltip")
-      // .style("opacity", 1)
-      // .style("font-size", "11px")
-      // .style("font-family", "sans-serif");
+  
 
   var div = svg.append("text")
     .attr("id", "tooltip")
@@ -132,7 +123,7 @@ else {
 
 // linegraph = function(country){
     svg.append("path")
-      // .datum(lijst)
+      // .datum(dataList)
       .attr("fill", "none")
      .attr("stroke", "rgb(102, 140, 255)")
      .attr("stroke-linejoin", "round")
@@ -144,7 +135,7 @@ else {
 
 
   svg.select("#line")
-    .datum(lijst)
+    .datum(dataList)
     .transition()
       .duration(1000)
       .attr("d", line);
@@ -177,13 +168,13 @@ else {
 
 
      var scatter = svg.selectAll("circle")
-                    .data(lijst);
+                    .data(dataList);
 
         scatter.enter()
         .append("circle")
         .attr("r", 5)
         .attr("class", countryLine)
-        .on('mouseover',function(d){
+        .on("mouseover",function(d){
           div
           .attr("x",65)
           .attr("y", 43)
@@ -194,7 +185,7 @@ else {
             .style("opacity",0.4)
         //     .text(function(d, i) { return d["Value"]; })
         })
-        .on('mouseout',function(d){
+        .on("mouseout",function(d){
           d3.select(this)
           .style("opacity",1)
           })
@@ -223,9 +214,9 @@ else {
         .transition()
         .duration(1500)
         .attr("class", countryLine)
-        .attr("cx", (lijst, function(d)
+        .attr("cx", (dataList, function(d)
         {return xScaleData(d["Year"]) + 12  }))
-        .attr("cy", (lijst, function(d)
+        .attr("cy", (dataList, function(d)
         {
           return (yScaleData(d["Value"]))}))
         .on("click",(function(d){

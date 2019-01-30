@@ -6,7 +6,7 @@ country_dict = {}
 
 # Opening the csv file, if the row length is equal to 3 and contains 'KTOE'
 # as element, the right data is found
-with open("Data files"/'paris-agreement-entry-into-force.csv') as csv_file:
+with open("Data files/paris-agreement-entry-into-force.csv") as csv_file:
     csv_reader = csv.reader(csv_file)
     for row in csv_reader:
         if "Ratification" in row:
