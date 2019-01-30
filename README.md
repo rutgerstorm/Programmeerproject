@@ -15,7 +15,7 @@ This webpage contains a worldmap which shows, which countries signed the Paris A
 ## Homepage
 The homepage is looking as follows, a short introduction on how the visualizations are relevant on the subject. In the upper left corner my name and studentnumber and a few inches below this the datasets used.
 
-<img src="docs/homepage.png" width="600">
+<img src="docs/finalhomepage.png" width="600">
 
 
 ## What are the differences between countries in CO2 emission and how are these built up?
