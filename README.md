@@ -44,3 +44,12 @@ The visualization page is looking as follows, including a worldmap, linegraph an
 
 ## References 
 
+Data Sources
+> [Emission by nation](https://cdiac.ess-dive.lbl.gov/trends/emis/tre_coun.html)  
+> [Emission by Sector](https://ourworldindata.org/co2-and-other-greenhouse-gas-emissions#emissions-by-sector)  
+> [Parties of the Paris Agreement](http://paris-agreement-entry-into-force.openclimatedata.net/)  
+
+D3 Plugins
+> * D3 Tooltip  
+> * D3 Worldmap  
+> Other might follow during the process
