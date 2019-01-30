@@ -25,5 +25,5 @@ with open('global-carbon-dioxide-emissions-by-sector-gg-co-1.csv') as csv_file:
 fileName = 'data'
 data = year_dict
 
-with open('data_piechart.json', 'w') as outfile:
+with open('data_sectors.json', 'w') as outfile:
     json.dump(data, outfile)

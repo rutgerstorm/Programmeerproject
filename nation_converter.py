@@ -19,7 +19,6 @@ with open('nation.1751_2014-1.csv') as csv_file:
 
             year_dict[(row["Year"])][row["Nation"]] = (row["Total CO2 emissions"])
 
-print(year_dict)
 # Writing the data to a json.file
 fileName = 'data'
 data = year_dict

@@ -14,7 +14,7 @@ console.log(country)
 var dataDict = {}
 // var years = []
 
-d3.json("data_piechart.json").then(function(dataBar){
+d3.json("data_sectors.json").then(function(dataBar){
 
   data = (dataBar[year][country]).map(Math.abs)
   makeBar()
