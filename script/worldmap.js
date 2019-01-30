@@ -9,8 +9,8 @@ Worldmap
 window.country = "Canada";
 // Window onload function, covers the total file
 window.onload = function() {
-  var worldmap = "world_countriesTest.json"
-  var request = [d3.json(worldmap), d3.json("data_agreement.json")];
+  var worldmap = "Json_files/world_countriesTest.json"
+  var request = [d3.json(worldmap), d3.json("Json_files/data_agreement.json")];
 
   // Transform datasets through transform functions
   Promise.all(request).then(function(response){

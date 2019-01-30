@@ -23,7 +23,7 @@ sector json file are uppercase
 var country = country.toUpperCase();
 
 // Reading in the json file and preparing the data
-d3.json("data_sectors.json").then(function(dataBar){
+d3.json("Json_files/data_sectors.json").then(function(dataBar){
 
   data = (dataBar[year][country]).map(Math.abs)
   makeBar()
@@ -149,13 +149,15 @@ function makeBar(){
          .domain([d3.min(data, function(d){return d;  }), d3.max(data, function(d){return d;  })])
          .range([h - margin, margin]);
 
+  /*
+  Function which creates the barchart, based on the data created in the beginning
+  */
   function barchart(){
   var bar = svg.selectAll("rect")
             .data(data);
       bar.enter()
       .append("rect")
       .attr("x", function(d, i) { return xScale(sectors[i]) + (1.3*margin); })
-
       .on('mouseover',function(d){
         div
         .attr("x",80)
@@ -167,8 +169,7 @@ function makeBar(){
         d3.select(this)
           .style("fill", "rgb(255, 170, 0)")
        })
-
-     .on('mouseout',function(d){
+      .on('mouseout',function(d){
        d3.select(this)
          .style("fill", function(d) {
           return "rgb(0, 0, " + (d / 1000) + ")"
@@ -184,12 +185,13 @@ function makeBar(){
         .attr("height", function(d) {
           return h - (margin) - yScale(d);
          })
-       .attr("fill", function(d) {
+        .attr("fill", function(d) {
          return "rgb(0, 0, " + (d / 1000) + ")"
        })
 }
 barchart()
      function createAxis(){
+
       // Create the y axis
       var yAxis = svg.append('g')
           .attr("class", "yAxis")

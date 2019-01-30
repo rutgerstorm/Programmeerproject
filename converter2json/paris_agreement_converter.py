@@ -1,11 +1,15 @@
+# Name: Rutger Storm
+# Student number: 12444049
+# Paris Agreement
+
 import csv
 import json
 
 
 country_dict = {}
 
-# Opening the csv file, if the row length is equal to 3 and contains 'KTOE'
-# as element, the right data is found
+# Opening the csv file, if "Ratification", "Acceptance" or "Approval" is in the
+# row of the country, it means this country signed the agreement
 with open("Data_files/paris-agreement-entry-into-force.csv") as csv_file:
     csv_reader = csv.reader(csv_file)
     for row in csv_reader:

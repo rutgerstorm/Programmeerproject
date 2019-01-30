@@ -1,3 +1,7 @@
+# Name: Rutger Storm
+# Student number: 12444049
+# Nation converter for Linegraph
+
 import csv
 import json
 
@@ -5,8 +9,10 @@ import json
 year_dict = {}
 country_dict = {}
 
-# Opening the csv file, if the row length is equal to 3 and contains 'KTOE'
-# as element, the right data is found
+# Opening the csv file, if the row is equal to column 'year', get in the if loop
+# Years selected from 2000 till 2014, then year is the key, with another
+# dictionary as value wherin nation the key is and the value is the value of
+# total CO2 emission
 with open('nation.1751_2014-1.csv') as csv_file:
     csv_reader = csv.DictReader(csv_file)
     for row in csv_reader:
