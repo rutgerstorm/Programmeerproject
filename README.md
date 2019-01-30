@@ -61,5 +61,5 @@ The visualization page is looking as follows, including a worldmap, linegraph an
 > [Dropdown content](https://gist.github.com/asha23/6112572) - Github Asha23
 
 ### Other
-> Stackoverflow
+> Stackoverflow  
 > Minor programmeren
