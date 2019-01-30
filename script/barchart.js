@@ -65,7 +65,7 @@ function makeBar(){
     // Units for x-axis
     svg.append("text")
           .attr("id", "xAxisUnit")
-          .attr("transform", "translate(410, 390)")
+          .attr("transform", "translate(440, 390)")
           .style("text-anchor", "end")
           .style("font-family", "sans-serif")
           .style("font-size", "11px")
@@ -133,7 +133,7 @@ function makeBar(){
         .attr('height', 100)
         .attr("id", "textYear")
         .append('g')
-        .attr('transform', 'translate(180,30)');
+        .attr('transform', 'translate(180,0)');
 
       gTime.call(sliderTime);
 

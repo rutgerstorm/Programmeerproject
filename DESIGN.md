@@ -13,7 +13,7 @@ Data Sources
 
 The data is stored as csv and has to be parsed and then converted to a json file. The data can be filtered on base of country name and year. In the 'Parties of the Paris Agreement' dataset, every country who signed the Paris agreement has the concept "Ratification", "Approval" or "Acceptance" in its row.  
 
-<img src="Images/diagram1.png" width="350">
+<img src="docs/diagram1.png" width="350">
 
 For the worldmap a dictionary will be used with every 'Year' as key. The value of this key is another key, the 'Country'. The 'Country' key has two values, the total CO2 emission and a yes or no, depending on if this specific country signed the Paris Agreement.
 
@@ -30,7 +30,7 @@ For the barchart another dictionary is created for the regions barchart. This di
 	"2008": {  
 		"Africa": "325814",  
 		"Western Europe": "708718", etc.}  
-  
+
 }  
 
 {  
@@ -51,7 +51,7 @@ For the circle diagram a dictionary has a key which also is the year. This key h
 
 ---
 
-<img src="Images/visualization.png" width="400">
+<img src="docs/visualization.png" width="400">
 
 The image above shows how the 3 visualizations interact with each other. When the user hovers over a country on the worldmap, the value of total CO2 emission is shown along with the yes or no regarding the Paris Agreement. A this moment the barchart only shows the bars from the regions with their total CO2 emissions plotted. When the users clicks on a country, the barchart will zoom in to the region this country belongs to and shows the barchart for all the countries in this region. The piechart shows how the emission from this country is divided through the different sectors. When the users clicks on a specific country in the barchart, the pie chart will adjust to this specific country.
 
