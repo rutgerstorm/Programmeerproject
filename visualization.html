@@ -25,16 +25,19 @@
           <div class="container-fluid">
             <div class="row">
               <div class="col-12">
+        <!-- Loading in the worldmap javascript file -->
         <script src="script/worldmap.js"></script>
               </div>
             </div>
           </div>
+          <!-- Creating the legend for the worldmap -->
           <div class="legend">
    <h3 id="Legend">Legend</h3>
     <div class="legend"> <p class="country-name"><span class="key-dot signed"></span>Agreement Signed</p> </div>
     <div class="legend"> <p class="country-name"><span class="key-dot notSigned"></span>Agreement not Signed</p> </div>
     <div class="legend"> <p class="country-name"><span class="key-dot noData"></span>No data</p> </div>
  </div>
+        <!-- Loading in the other javascript files -->
         <script src="script/linegraph.js"></script>
         <script src="script/barchart.js"></script>
         <link rel="stylesheet" type="text/css" href="programmeerproject.css">
@@ -47,6 +50,7 @@
         <svg width="0" height="0" id="Linechart"transform="translate(37 0)"></svg>
         <svg width="0" height="0" id="Barchart" transform="translate(180 0)"></svg>
         <div class="">
+          <!-- Creating the dropdown button -->
       <div class="dropdown">
         <div class="dropdown-content">
           <select onchange="dropdown(this.options[this.selectedIndex].value)">

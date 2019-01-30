@@ -128,21 +128,6 @@ width: 100%;
 }
 
 
-/* .slider{
-  background:rgb(255, 230, 179);
-  animation: slide 3s infinite;
-}
-
-@keyframes .slider {
-  50%{
-    background: rgb(255, 230, 179);
-  }
-  100%{
-    background:
-  }
-} */
-
-
 .dropdown{
   transform: translate(60px, -600px)
 
@@ -168,7 +153,6 @@ width: 100%;
 #Linechart{
   margin-left: -50px;
 }
-
 
 
 #tooltip {
