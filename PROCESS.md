@@ -1,4 +1,4 @@
-Process Book
+## Process Book
 
 #day 2 08-01-19
 The object for today was writing a design document in markdown.   
@@ -19,7 +19,7 @@ Already uploaded these in javascript.
 Called in sick.
 
 #day6 14-01-19
-Almost every dataset converter to the right JSON format, except for the country barchart.  
+Almost every dataset converted to the right JSON format, except for the country barchart.  
 But now ready to start with the worldmap. The country barchart is very hard because there was  
 a dataset missing so I’ve have to combine 3 datasets from different length and format.
 
@@ -40,7 +40,7 @@ able to click on this years in the linegraph. Then a barchart shows how this CO2
 the different energysectors. This plan seems much more realistic than the previous, so there’s quite a lot  
 work to catch up with.
 
-# day10 18-01-19
+#day10 18-01-19
 Started with making the linegraph and now the line is visible. The graphs are missing and the line has  
 to be scaled with d3.mix and d3.max. Then it’s done. But confident that this plan will work out.
 
