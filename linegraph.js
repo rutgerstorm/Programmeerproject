@@ -15,7 +15,7 @@ var dataDict = {}
 var countryDict = {}
 
 
-d3.json("data_nation.json").then(function(data){
+d3.json("Json files"/"data_nation.json").then(function(data){
 console.log(data)
 
 lijst = []
