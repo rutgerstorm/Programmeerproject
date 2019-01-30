@@ -1,37 +1,43 @@
-// function countryBarchart(countryBar){
+/*
+Rutger Storm
+12444049
+Programmeerproject
+Barchart
+*/
+
 sliderPresent = true;
+// All the sector through which the bars are divided
 sectors = ["Transport", "Forestry","Energy","Other sources","Agriculture, Land Use & Forestry","Waste","Residential & commercial","Industry","Agriculture"]
+/*
+The country on which is clicked comes in, the first year is always set at 2010
+*/
 function createBar(year, country){
-console.log(year)
 d3.select("#Year")
 .transition()
 .text(year)
 
-country = country.toUpperCase();
-// country = country.charAt(0).toUpperCase() + country.slice(1)
-console.log(country)
-// console.log(countryBar);
-var dataDict = {}
-// var years = []
+/*
+Turning the country name to uppercase, because the all the countries in the
+sector json file are uppercase
+*/
+var country = country.toUpperCase();
 
+// Reading in the json file and preparing the data
 d3.json("data_sectors.json").then(function(dataBar){
 
   data = (dataBar[year][country]).map(Math.abs)
   makeBar()
 
-
-
-
+// Determining the minimum and maximum value of the data
 min = d3.min(data, function(d){return d;  })
 max = d3.max(data, function(d){return d;  })
-// console.log(min)
-// console.log(max)
+
 
 
 function makeBar(){
   //Width and height from the SVG
-  var w = 750;
-  var h = 420;
+  var w = 500;
+  var h = 320;
   var barPadding = 2;
   var margin = 30
 
@@ -136,7 +142,7 @@ function makeBar(){
 
   // Adjusting the xScale
   var xScale = d3.scaleBand()
-    .domain(["Transport", "Forestry","Energy","Other sources","Agriculture, Land Use & Forestry","Waste","Residential & commercial","Industry","Agriculture"])
+    .domain(["Transport", "Forestry","Energy","Other sources","Agriculture & Land Use","Waste","Residential & commercial","Industry","Agriculture"])
     .range([margin, (w - (1.8*margin))]);
 
   // Adjusting the yScale
@@ -207,7 +213,7 @@ function makeBar(){
           .attr("class", "xAxis")
           .style("font-family", "sans-serif")
           .style("font-size", "7px")
-          .attr("transform", "translate(30,380)")
+          .attr("transform", "translate(30,280)")
           // .call(d3.axisBottom(xScale));
 
           svg.select(".yAxis")

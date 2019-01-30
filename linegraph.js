@@ -52,8 +52,8 @@ else {
 
 
   var margin = 50
-  var width = 700
-  var height = 400
+  var width = 500
+  var height = 300
 
 
   // Adjusting the xScale

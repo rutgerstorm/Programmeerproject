@@ -16,15 +16,15 @@ window.onload = function() {
   Promise.all(request).then(function(response){
 
 // Variables for the svg
-var w = 1600;
-var h = 800;
+var w = 1000;
+var h = 600;
 var margin = 50;
 
 var path = d3.geoPath();
 
 // Projecting and scaling the worldmap
 var projection = d3.geoMercator()
-                  .scale(180)
+                  .scale(130)
                   .translate( [w / 2, h / 1.5]);
 
 var path = d3.geoPath().projection(projection);
