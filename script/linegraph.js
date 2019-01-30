@@ -64,7 +64,7 @@ else {
   // Adjusting the yScale
   var yScaleData = d3.scaleLinear()
       .domain([(d3.max(dataList, function(d){return d["Value"]})), d3.min(dataList, function(d){return d["Value"]/1.05})]) // input
-      .range([(2*margin), height - margin])
+      .range([margin, height - margin])
 
   // Creating the svg for the linechart
   var svg = d3.select("#Linechart")
@@ -77,6 +77,7 @@ else {
     .style("opacity", 0.8)
     .attr("x", 50)
     .attr("y", 50)
+    .style("font-size", "12px")
     .attr("class", "tooltip")
 
 
@@ -93,20 +94,20 @@ function textUnits(){
   // Units for x-axis
   svg.append("text")
         .attr("id", "xAxisUnit")
-        .attr("transform", "translate(600, 390)")
+        .attr("transform", "translate(450, 390)")
         .style("text-anchor", "end")
         .style("font-family", "sans-serif")
-        .style("font-size", "13px")
+        .style("font-size", "11px")
 
   // Units for y-axis
   svg.append("text")
           .attr("id", "yAxisUnit")
-          .attr("x",-345)
-          .attr("y", 10)
+          .attr("x",-355)
+          .attr("y", 80)
           .attr("transform", "rotate(-90)")
           .style("text-anchor", "end")
           .style("font-family", "sans-serif")
-          .style("font-size", "11px")
+          .style("font-size", "8px")
 
   // Update the title of the linegraph
   svg.select("#graphTitle")
@@ -132,11 +133,15 @@ textUnits()
     // Appending the total x-axis
     svg.append("g")
       .attr("class", "xAxis")
+      .style("font-family", "sans-serif")
+      .style("font-size", "8px")
       .attr("transform", "translate(-10," + (height - 50) + ")")
 
-    // Appending the total x-axis
+    // Appending the total y-axis
     svg.append("g")
         .attr("class", "yAxis")
+        .style("font-family", "sans-serif")
+        .style("font-size", "8px")
         .attr("transform", "translate(90,0)")
 
     // Updating the total x-axis
@@ -190,8 +195,8 @@ function scatter(){
       .attr("class", countryLine)
       .on("mouseover",function(d){
         tooltip
-        .attr("x",65)
-        .attr("y", 43)
+        .attr("x",100)
+        .attr("y", 45)
         .attr("font-family", "Helvetica")
         .style("display", "true")
         .text((Math.round(d.Value)));

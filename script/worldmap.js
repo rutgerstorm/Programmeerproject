@@ -24,7 +24,7 @@ var path = d3.geoPath();
 
 // Projecting and scaling the worldmap
 var projection = d3.geoMercator()
-                  .scale(130)
+                  .scale(140)
                   .translate( [w / 2, h / 1.5]);
 
 var path = d3.geoPath().projection(projection);
@@ -35,12 +35,12 @@ var svg = d3.select("#Worldmap")
 
 var tooltip = svg.append("text")
   .attr("id", "tooltip")
-  .attr("x", 1300)
+  .attr("x", 900)
   .attr("y", 50)
   .attr("class", "tooltip")
   .style("text-anchor", "end")
   .style("font-family", "Sans-serif")
-  .style("font-size", "35px")
+  .style("font-size", "27px")
   .style("Opacity", 0.6)
 
   // Appending the data for the Paris Agreement to the countries
@@ -75,12 +75,12 @@ is shown, appears
 */
 function createCountryTitle(country){
   svg.append("text")
-          .attr("x",900)
-          .attr("y", 770)
+          .attr("x",640)
+          .attr("y", 550)
           .attr("id", "Title")
           .style("text-anchor", "end")
           .style("font-family", "Sans-serif")
-          .style("font-size", "35px")
+          .style("font-size", "27px")
           .style("Opacity", 0.6)
   svg.select("#Title")
     .transition()
@@ -95,13 +95,13 @@ appears and this year is shown
 */
 function createYearTitle(year){
   svg.append("text")
-          .attr("x",990)
-          .attr("y", 770)
+          .attr("x",730)
+          .attr("y", 550)
           .attr("id", "Year")
           .style("text-anchor", "end")
           .style("font-family", "Hervetica")
           .style("font-family", "Sans-serif")
-          .style("font-size", "35px")
+          .style("font-size", "27px")
           .style("Opacity", 0.6)
   svg.select("#Year")
     .transition()

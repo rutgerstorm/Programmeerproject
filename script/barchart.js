@@ -7,7 +7,7 @@ Barchart
 
 sliderPresent = true;
 // All the sector through which the bars are divided
-sectors = ["Transport", "Forestry","Energy","Other sources","Agriculture, Land Use & Forestry","Waste","Residential & commercial","Industry","Agriculture"]
+sectors = ["Transport", "Forestry","Energy","Other","Agriculture & Land Use","Waste","Residential & commercial","Industry","Agriculture"]
 /*
 The country on which is clicked comes in, the first year is always set at 2010
 */
@@ -51,6 +51,7 @@ function makeBar(){
       .style("opacity", 0.7)
       .attr("x", 800)
       .attr("y", 50)
+      .style("font-size", "12px")
       .attr("class", "div")
 
     // Append the title of the linegraph
@@ -64,7 +65,7 @@ function makeBar(){
     // Units for x-axis
     svg.append("text")
           .attr("id", "xAxisUnit")
-          .attr("transform", "translate(630, 410)")
+          .attr("transform", "translate(410, 390)")
           .style("text-anchor", "end")
           .style("font-family", "sans-serif")
           .style("font-size", "11px")
@@ -77,7 +78,7 @@ function makeBar(){
             .attr("transform", "rotate(-90)")
             .style("text-anchor", "end")
             .style("font-family", "sans-serif")
-            .style("font-size", "13px")
+            .style("font-size", "8px")
 
   // Update the title of the linegraph
   svg.select("#graphTitle")
@@ -141,7 +142,7 @@ function makeBar(){
 
   // Adjusting the xScale
   var xScale = d3.scaleBand()
-    .domain(["Transport", "Forestry","Energy","Other sources","Agriculture, Land Use & Forestry","Waste","Residential & commercial","Industry","Agriculture"])
+    .domain(["Transport", "Forestry","Energy","Other","Agriculture & Land Use","Waste","Residential & commercial","Industry","Agriculture"])
     .range([margin, (w - margin)]);
 
   // Adjusting the yScale
@@ -162,7 +163,6 @@ function makeBar(){
         div
         .attr("x",80)
         .attr("y", 15)
-        .style("font-size", "12px")
         .attr("font-family", "Helvetica")
         .style("display", "true")
         .text(d);
@@ -204,7 +204,7 @@ barchart()
       var xAxis = svg.append('g')
           .attr("class", "xAxis")
           .style("font-family", "sans-serif")
-          .style("font-size", "7px")
+          .style("font-size", "6px")
           .attr("transform", "translate(30,360)")
 
           // Update the y-axis
