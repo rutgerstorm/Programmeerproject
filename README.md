@@ -17,6 +17,8 @@ The homepage is looking as follows, a short introduction on how the visualizatio
 
 <img src="docs/finalhomepage.jpg" width="500">
 
+### Visualization Page
+The visualization page is looking as follows, including a worldmap, linegraph and barchart.
 
 ## What are the differences between countries in CO2 emission and how are these built up?
 
