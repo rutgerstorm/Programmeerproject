@@ -21,11 +21,12 @@ function makeLineChart(countryLine){
 var countryLine = countryLine.toUpperCase();
 
 //  Loading in the data for through a json file
-d3.json("Json files/data_nation.json").then(function(data){
+d3.json("Json_files/data_nation.json").then(function(data){
 
 
 dataList = []
 
+// If there is data avaiable, prepare the data in the right way
 for (year in data){
   if (!isNaN(+data[year][countryLine])){
   dataDict = {}
@@ -37,6 +38,7 @@ for (year in data){
   dataList.push(dataDict)
 
 }
+// If there's no data avaiable, display 'No data available'
 else {
   d3.select("#Year")
   .transition()
@@ -44,7 +46,7 @@ else {
   d3.select("#Title")
   .transition()
   .text("No data Available")
-  createBar("")
+  createBar()
 }
 }
 
@@ -54,36 +56,33 @@ else {
   var height = 400
 
 
+  // Adjusting the xScale
   var xScaleData = d3.scaleBand()
-      .domain(["2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014"]) // input
+      .domain(["2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014"])
       .range([margin + 25, width - margin])
 
+  // Adjusting the yScale
   var yScaleData = d3.scaleLinear()
       .domain([(d3.max(dataList, function(d){return d["Value"]})), d3.min(dataList, function(d){return d["Value"]/1.05})]) // input
       .range([margin, height - margin])
 
-
-  var line = d3.line()
-      .x(function(d) {return (xScaleData(d.Year) - 8)})
-      // d3.max(d.Year, function(d) { return d; })
-      .y(function(d) {return ((yScaleData(d.Value)))})
-
-
-      // x.domain(d3.extent(, function(d) { return +d}));
-      // y.domain(d3.extent(dataDictect.values(countryDict), function(d) { return +d }));
-
+  // Creating the svg for the linechart
   var svg = d3.select("#Linechart")
     .attr("width", width)
     .attr("height", height);
-  
 
-  var div = svg.append("text")
+  // Appending the tooltip
+  var tooltip = svg.append("text")
     .attr("id", "tooltip")
     .style("opacity", 0.8)
     .attr("x", 50)
     .attr("y", 50)
     .attr("class", "tooltip")
 
+
+function textUnits(){
+
+  // Title for the linegraph
   svg.append("text")
         .attr("id", "graphTitle")
         .attr("transform", "translate(450, 25)")
@@ -91,7 +90,7 @@ else {
         .style("font-family", "sans-serif")
         .style("font-size", "17px")
 
-
+  // Units for x-axis
   svg.append("text")
         .attr("id", "xAxisUnit")
         .attr("transform", "translate(600, 390)")
@@ -99,7 +98,7 @@ else {
         .style("font-family", "sans-serif")
         .style("font-size", "13px")
 
-
+  // Units for y-axis
   svg.append("text")
           .attr("id", "yAxisUnit")
           .attr("x",-345)
@@ -109,123 +108,120 @@ else {
           .style("font-family", "sans-serif")
           .style("font-size", "11px")
 
+  // Update the title of the linegraph
+  svg.select("#graphTitle")
+    .transition()
+    .duration(1000)
+      .text("Total CO2 emission in Thousand Metric Tons (1000 Ton)");
 
+  // Update the units for the x-axis
+  svg.select("#xAxisUnit")
+    .transition()
+    .duration(1000)
+      .text("Year");
 
+  // Update the units for the y-axis
+  svg.select("#yAxisUnit")
+    .transition()
+    .duration(1000)
+      .text("1000 Tons");
+
+}
+textUnits()
+
+    // Appending the total x-axis
     svg.append("g")
       .attr("class", "xAxis")
       .attr("transform", "translate(-10," + (height - 50) + ")")
-      // .call(d3.axisBottom(xScaleData));
 
-      svg.append("g")
-          .attr("class", "yAxis")
-          .attr("transform", "translate(65,0)")
-          // .call(d3.axisLeft(yScaleData));
+    // Appending the total x-axis
+    svg.append("g")
+        .attr("class", "yAxis")
+        .attr("transform", "translate(65,0)")
 
-// linegraph = function(country){
-    svg.append("path")
-      // .datum(dataList)
-      .attr("fill", "none")
-     .attr("stroke", "rgb(102, 140, 255)")
-     .attr("stroke-linejoin", "round")
-     .attr("stroke-linecap", "round")
-     .attr("stroke-width", 3)
-     .attr("id", "line")
-     .attr("transform", "translate(20,0)")
-     // .attr("d", line);
+    // Updating the total x-axis
+    svg.select(".xAxis")
+      .transition()
+      .duration(1000)
+      .call(d3.axisBottom(xScaleData));
+
+    // Updating the total y-axis
+    svg.select(".yAxis")
+      .transition()
+      .duration(1000)
+      .call(d3.axisLeft(yScaleData));
 
 
+function lineGraph(){
+  var line = d3.line()
+      .x(function(d) {return (xScaleData(d.Year) - 8)})
+      .y(function(d) {return ((yScaleData(d.Value)))})
+
+  // Layout for the line in the graph
+  svg.append("path")
+    .attr("fill", "none")
+    .attr("stroke", "rgb(102, 140, 255)")
+    .attr("stroke-linejoin", "round")
+    .attr("stroke-linecap", "round")
+    .attr("stroke-width", 3)
+    .attr("id", "line")
+    .attr("transform", "translate(20,0)")
+
+  // Updating the line
   svg.select("#line")
     .datum(dataList)
     .transition()
       .duration(1000)
       .attr("d", line);
 
-  svg.select("#graphTitle")
-    .transition()
-    .duration(1000)
-      .text("Total CO2 emission in Thousand Metric Tons (1000 Ton)");
+}
+lineGraph()
 
-  svg.select("#xAxisUnit")
-    .transition()
-    .duration(1000)
-      .text("Year");
-
-  svg.select("#yAxisUnit")
-    .transition()
-    .duration(1000)
-      .text("1000 Tons");
-
-
-  svg.select(".yAxis")
-    .transition()
-    .duration(1000)
-    .call(d3.axisLeft(yScaleData));
-
-    svg.select(".xAxis")
-      .transition()
-      .duration(1000)
-      .call(d3.axisBottom(xScaleData));
-
-
-     var scatter = svg.selectAll("circle")
-                    .data(dataList);
-
-        scatter.enter()
-        .append("circle")
-        .attr("r", 5)
-        .attr("class", countryLine)
-        .on("mouseover",function(d){
-          div
-          .attr("x",65)
-          .attr("y", 43)
-          .attr("font-family", "Helvetica")
-          .style("display", "true")
-          .text((Math.round(d.Value)));
-          d3.select(this)
-            .style("opacity",0.4)
-        //     .text(function(d, i) { return d["Value"]; })
+function scatter(){
+  /*
+  Plotting a scatter over the linegraph, making use of x and y position of
+  the linegraph
+  */
+  var scatter = svg.selectAll("circle")
+                .data(dataList);
+      scatter.enter()
+      .append("circle")
+      .attr("r", 5)
+      .attr("class", countryLine)
+      .on("mouseover",function(d){
+        tooltip
+        .attr("x",65)
+        .attr("y", 43)
+        .attr("font-family", "Helvetica")
+        .style("display", "true")
+        .text((Math.round(d.Value)));
+        d3.select(this)
+          .style("opacity",0.4)
+      })
+      .on("mouseout",function(d){
+        d3.select(this)
+        .style("opacity",1)
         })
-        .on("mouseout",function(d){
-          d3.select(this)
-          .style("opacity",1)
-          })
-
-        .on("click",(function(d){
-          // if (year < 2011){
-          createBar(d["Year"], this.getAttribute("class"))
-        // }
-        // else {
-        //     d3.select("#Year")
-        //     .transition()
-        //     .text()
-        //     d3.select("#Title")
-        //     .transition()
-        //     .text("No data Available")
-        //     createBar("")
-        // }
-          // createYear(d["Year"])
-        }))
+      .on("click",(function(d){
+        createBar(d["Year"], this.getAttribute("class"))
+      }))
+      // Updating the scatter plot
+      .merge(scatter)
+      .transition()
+      .duration(1500)
+      .attr("class", countryLine)
+      .attr("cx", (dataList, function(d)
+      {return xScaleData(d["Year"]) + 12  }))
+      .attr("cy", (dataList, function(d)
+      {
+        return (yScaleData(d["Value"]))}))
+      .on("click",(function(d){
+        createBar(d["Year"], countryLine)
+      }))
+      scatter.exit().remove();
 
 
-
-
-
-        .merge(scatter)
-        .transition()
-        .duration(1500)
-        .attr("class", countryLine)
-        .attr("cx", (dataList, function(d)
-        {return xScaleData(d["Year"]) + 12  }))
-        .attr("cy", (dataList, function(d)
-        {
-          return (yScaleData(d["Value"]))}))
-        .on("click",(function(d){
-          createBar(d["Year"], countryLine)
-        }))
-
-        scatter.exit().remove();
-
-
-
+}
+scatter()
 })
 }
