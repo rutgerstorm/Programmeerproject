@@ -37,12 +37,9 @@ max = d3.max(data, function(d){return d;  })
 function makeBar(){
   //Width and height from the SVG
   var w = 500;
-  var h = 320;
+  var h = 400;
   var barPadding = 2;
   var margin = 30
-
-
-
 
   var svg = d3.select("#Barchart")
     .attr("width", w + 5)
@@ -50,19 +47,21 @@ function makeBar(){
 
 
     var div = svg.append("text")
-      .attr("id", "tooltip")
+      .attr("id", "div")
       .style("opacity", 0.7)
       .attr("x", 800)
       .attr("y", 50)
-      .attr("class", "tooltip")
+      .attr("class", "div")
 
+    // Append the title of the linegraph
     svg.append("text")
           .attr("id", "graphTitle")
-          .attr("transform", "translate(530, 15)")
+          .attr("transform", "translate(490, 15)")
           .style("text-anchor", "end")
           .style("font-family", "sans-serif")
-          .style("font-size", "17px")
+          .style("font-size", "12px")
 
+    // Units for x-axis
     svg.append("text")
           .attr("id", "xAxisUnit")
           .attr("transform", "translate(630, 410)")
@@ -70,7 +69,7 @@ function makeBar(){
           .style("font-family", "sans-serif")
           .style("font-size", "11px")
 
-
+    // Units for y-axis
     svg.append("text")
             .attr("id", "yAxisUnit")
             .attr("x",-335)
@@ -80,16 +79,19 @@ function makeBar(){
             .style("font-family", "sans-serif")
             .style("font-size", "13px")
 
+  // Update the title of the linegraph
   svg.select("#graphTitle")
     .transition()
     .duration(1000)
       .text("Total CO2 emission per sector");
 
+  // Update the units for the x-axis
   svg.select("#xAxisUnit")
     .transition()
     .duration(1000)
       .text("Sector");
 
+  // Update the units for the x-axis
   svg.select("#yAxisUnit")
     .transition()
     .duration(1000)
@@ -101,13 +103,12 @@ function makeBar(){
       return new Date(2000 + d, 11, 3);
     });
 
-
-
-
-
+    /*
+    Turn the sliderPresent to false so the slider is appended only one time
+    the slider again
+    */
     if (sliderPresent){
       sliderPresent = false
-// function slider(year, country){
       var sliderTime = d3
         .sliderBottom()
         .min(d3.min(dataTime))
@@ -137,41 +138,29 @@ function makeBar(){
 
 
     }
-  // }
-  // slider()
 
   // Adjusting the xScale
   var xScale = d3.scaleBand()
-    .domain(["Transport", "Forestry","Energy","Other sources","Agriculture & Land Use","Waste","Residential & commercial","Industry","Agriculture"])
-    .range([margin, (w - (1.8*margin))]);
+    .domain(["Transport", "Forestry","Energy","Other sources","Agriculture, Land Use & Forestry","Waste","Residential & commercial","Industry","Agriculture"])
+    .range([margin, (w - margin)]);
 
   // Adjusting the yScale
   var yScale = d3.scaleLinear()
          .domain([d3.min(data, function(d){return d;  }), d3.max(data, function(d){return d;  })])
          .range([h - margin, margin]);
-//
-// // Added a tooltip which shows the exact value for every country
-// var tooltip = d3.select('body').append("div")
-//    .style("display", "true")
-//    .style("fill", "orange")
-//    .style("font-size", "11px")
-//    .style("font-family", "sans-serif")
-//    .text("Unemployment Rate");
-//
-//
-//
-  // Create the barchart
-  // console.log(data);
+
+  function barchart(){
   var bar = svg.selectAll("rect")
             .data(data);
       bar.enter()
       .append("rect")
-      .attr("x", function(d, i) { return xScale(sectors[i]) + (1.5 *margin); })
+      .attr("x", function(d, i) { return xScale(sectors[i]) + (1.3*margin); })
 
       .on('mouseover',function(d){
         div
         .attr("x",80)
         .attr("y", 15)
+        .style("font-size", "12px")
         .attr("font-family", "Helvetica")
         .style("display", "true")
         .text(d);
@@ -198,7 +187,8 @@ function makeBar(){
        .attr("fill", function(d) {
          return "rgb(0, 0, " + (d / 1000) + ")"
        })
-
+}
+barchart()
      function createAxis(){
       // Create the y axis
       var yAxis = svg.append('g')
@@ -213,18 +203,19 @@ function makeBar(){
           .attr("class", "xAxis")
           .style("font-family", "sans-serif")
           .style("font-size", "7px")
-          .attr("transform", "translate(30,280)")
-          // .call(d3.axisBottom(xScale));
+          .attr("transform", "translate(30,360)")
 
+          // Update the y-axis
           svg.select(".yAxis")
             .transition()
             .duration(1000)
             .call(d3.axisLeft(yScale));
 
-            svg.select(".xAxis")
-              .transition()
-              .duration(1000)
-              .call(d3.axisBottom(xScale));
+          // Update the x-axis
+          svg.select(".xAxis")
+            .transition()
+            .duration(1000)
+            .call(d3.axisBottom(xScale));
     }
     createAxis()
    }

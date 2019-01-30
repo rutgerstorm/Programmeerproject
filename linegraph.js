@@ -52,19 +52,19 @@ else {
 
 
   var margin = 50
-  var width = 500
-  var height = 300
+  var width = 570
+  var height = 400
 
 
   // Adjusting the xScale
   var xScaleData = d3.scaleBand()
       .domain(["2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014"])
-      .range([margin + 25, width - margin])
+      .range([(2*margin), width - margin])
 
   // Adjusting the yScale
   var yScaleData = d3.scaleLinear()
       .domain([(d3.max(dataList, function(d){return d["Value"]})), d3.min(dataList, function(d){return d["Value"]/1.05})]) // input
-      .range([margin, height - margin])
+      .range([(2*margin), height - margin])
 
   // Creating the svg for the linechart
   var svg = d3.select("#Linechart")
@@ -88,7 +88,7 @@ function textUnits(){
         .attr("transform", "translate(450, 25)")
         .style("text-anchor", "end")
         .style("font-family", "sans-serif")
-        .style("font-size", "17px")
+        .style("font-size", "12px")
 
   // Units for x-axis
   svg.append("text")
@@ -137,7 +137,7 @@ textUnits()
     // Appending the total x-axis
     svg.append("g")
         .attr("class", "yAxis")
-        .attr("transform", "translate(65,0)")
+        .attr("transform", "translate(90,0)")
 
     // Updating the total x-axis
     svg.select(".xAxis")
@@ -154,7 +154,7 @@ textUnits()
 
 function lineGraph(){
   var line = d3.line()
-      .x(function(d) {return (xScaleData(d.Year) - 8)})
+      .x(function(d) {return (xScaleData(d.Year) - 15)})
       .y(function(d) {return ((yScaleData(d.Value)))})
 
   // Layout for the line in the graph
@@ -211,7 +211,7 @@ function scatter(){
       .duration(1500)
       .attr("class", countryLine)
       .attr("cx", (dataList, function(d)
-      {return xScaleData(d["Year"]) + 12  }))
+      {return xScaleData(d["Year"]) + 4  }))
       .attr("cy", (dataList, function(d)
       {
         return (yScaleData(d["Value"]))}))
