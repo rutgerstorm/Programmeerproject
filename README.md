@@ -9,7 +9,7 @@
 [Webpage](https://rutgerstorm.github.io/Programmeerproject/index.html)
 
 ### Link to productvideo
-> Coming soon
+> https://youtu.be/NbB_54dTslQ
 
 ## Short Summary
 This webpage contains a worldmap which shows, which countries signed the Paris Agreement. The user can hoover over every country and when the users clicks on a country the following happens. A linegraph is shown, which shows the total CO2 emission of this country from 2000 till 2014. The user can click on a year in this linegraph, then a barchart is shown. The barchart visualizes how the CO2 of this country in this year is divided through different sectors.
