@@ -48,5 +48,23 @@ The first function in the linegraph Javascript file, is the dropDown function. T
 ### Barchart  
 The barchart Javascript file starts with a 'sliderPresent = true' (later more on this). The createBar function is the first function in this file, it gets input from the worldmap or the linegraph(scatter). The input contains of two elements, a year and a country. This year(x) and country(y) are used to search the right data from the data_sectors.json file. The data from country y and year x. The right data is now stored in a variable called 'data'. Then the next function comes by, makeBar, concerning the total barchart file. The svg element was already present but had no width nor height. So this is done first, thereby some general elements for the barchart are added. For example the units for the axis and the title. Then there is an if loop with the variable sliderPresent we've seen earlier. The sliderPresent is true, so it get's in the if loop and they it's immediatly turned to false. This prevents the slider from appending itself more than once. The function barchart is the one creating the bar. Rect are appended based on the data called 'data', made in the beginning of the file. The tooltip is set at a absolute position. The rects and data are stored in a variable called bar. This variable is merged and the bars are updated, this is how the barchart update function works. The latest function is the createAxis, these also had to be updated through a transition function. 
 
+## Challenges
+In my proposal I've had a plan written out which was totally different compared to the end result. The image below shows some sketches of my first plan from the proposal. 
+
+<img src="docs/visualization.png" width="500">
+
+The biggest challenge for this was converting the data for the barchart in the right way. This had to be done as follows:  
+{  
+"2008": {  
+"Africa": {"Algeria": "30054", "Angola": "7011", etc.}  
+"Developing America": {"Antigua & Barbuda": "131", Argentina: "51570"}  
+}  
+}  
+I had to combine two datasets, one for the regions and one for the countries. After a few days in, I realised there was no note in neither of the files that says which country belonged to which region. So another txt file was used to get this information. So the challenge was to combine 3 different files from different length and format. This took way to much time, this resulted in a big turnover. The big turnover was as follows, the worldmap stayed, but the barchart was replaced with a linegraph and a barchart about the sectors was replacing the piechart. The data for the linegraph was much easier to get and the data for the new barchart was already there. The plans were made on a thursday, one day before the deadline of the alpha version. At this point in only had worldmap without any colours and a hoover function that barely worked. So there was a lot work to catch up with. But it was defitely the right choice, I was confident about this new plan.   
+
+This really made me realise how dynamic the total process of programming can be. Eventhough a proposal plan was made months before this project started, with a plan thought through. This plan changed from one day to another in something totally different. After the turnover it all went much better than before, I knew what had to be done, in which way and when. 
+
+
+
 
 
