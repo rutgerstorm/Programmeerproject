@@ -62,9 +62,13 @@ The biggest challenge for this was converting the data for the barchart in the r
 }  
 I had to combine two datasets, one for the regions and one for the countries. After a few days in, I realised there was no note in neither of the files that says which country belonged to which region. So another txt file was used to get this information. So the challenge was to combine 3 different files from different length and format. This took way to much time, this resulted in a big turnover. The big turnover was as follows, the worldmap stayed, but the barchart was replaced with a linegraph and a barchart about the sectors was replacing the piechart. The data for the linegraph was much easier to get and the data for the new barchart was already there. The plans were made on a thursday, one day before the deadline of the alpha version. At this point in only had worldmap without any colours and a hoover function that barely worked. So there was a lot work to catch up with. But it was defitely the right choice, I was confident about this new plan.   
 
-This really made me realise how dynamic the total process of programming can be. Eventhough a proposal plan was made months before this project started, with a plan thought through. This plan changed from one day to another in something totally different. After the turnover it all went much better than before, I knew what had to be done, in which way and when. 
+This became the final plan  
+<img src="docs/overallss.png" width="500">
+
+This really made me realise how dynamic the total process of programming can be. Eventhough a proposal plan was made months before this project started, with a plan thought through. This plan changed from one day to another in something totally different. 
 
 
-
+## Decisions  
+After the turnover it all went much better than before, I knew what had to be done, in which way and when. The progress made every day became visible, I really started enjoying this project. The switch from piechart to barchart also fitted much better. Because the sectors together were not equal to the total CO2 emission from the linegraph. A piechart suggests the total is 100%, but this was not the case. So the barchart visualises the data the way it should. If I changed my plan earlier, the end result would be better. With a little more time I would have made some changes in the webpage. For example an update function in the dropdown and slider button. There also no data available for the barchart past 2010. So if the users clicks on a year in the linegraph, past 2010. It should result in a empty barchart. For the linegraph as well, if the users clicks on a country with no data, it should result in a empty linegraph and barchart. I think my code could also be better, but there was no more time left to improve this. I really did the best I could with the time that was given, so I hope it results in grade that fits to the effort I've put in.  
 
 
