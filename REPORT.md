@@ -9,6 +9,36 @@ My webpage contains a worldmap which shows, which countries signed the Paris Agr
 ## Technical Design  
 My webpage contains two pages, a homepage and a visualization page. Therefore I've used two html files, index.html for the homepage and visualization.html for the visualization page. Layout for these pages is done in a general css file, called programeerproject.css. The visualization page contains three different visualizations, a worldmap, a linegraph and a barchart. For every visualization, a seperate Javascript file is used. Called worldmap.js, linegraph.js and barchart.js. To convert the data to usuable json files, 3 python files are used, nation_converter.py, sector_converter.py and paris_agreement_converter.py.
 
+### Converter  
+The data for the linegraph had to be in the following format: 
+{
+"2008": {
+"Netherlands": "48274", ..,
+"Germany": "212862", .., etc.}
+}
+This was quite easy, opening the csv file, if the row is equal to column "year", 
+years selected from 2000 till 2014, then year is the key, with another
+dictionary as value wherin nation the key is and the value is the value of
+total CO2 emission.  
+
+---
+The data for the Paris agreement had to be in the following format:
+{"Afghanistan": "Yes", "Albania":"Yes" .. }
+
+Opening the csv file, if "Ratification", "Acceptance" or "Approval" was in the
+row of the country, it means this country signed the agreement. So then Yes was the value of the country,
+if not, No was the value of the country. 
+
+---
+The data for the barchart had to be in the following format:
+{"2000": {"AFGHANISTAN": ["269.17", "0", "96.7", "0", "0", "0", "182", "147.59", "0"]
+
+Opening the csv file, if the row is equal to column "year", years selected from 2000 till 2014,  
+then year is the key, with another dictionary as value. In this dictionary the country ("Entity") 
+is the key and a list of the 9 different sector values is the value.
+
+---
+
 ### Worldmap
 The worldmap.js contains 2 functions called 'createCountryTitle' and 'createYearTitle'. These functions function are invoked when the users clicks on a country. The country and year on which is clicked is shown. The variable tooltip, is used the shows the tooltip in the upper right corner, so the user can see over which country they hoover. The function dataParis links the data about the Paris Agreement to the countries, Yes if they signed the agreement, No if they haven't. The function worldmapLayout, is used to layout the worldmap. For example, the colours of the countries, the hoover function and the on click. This onclick functions calls in four different functions. 'makeLineChart', 'createBar', 'createCountryTitle' and 'createYearTitle'. The createCountryTitle and createYearTitle are described above, the other will be described in the following sections. 
 
