@@ -1,4 +1,4 @@
-## Final report Programmeerproject
+# Final Report Programmeerproject
 
 ## Description
 
