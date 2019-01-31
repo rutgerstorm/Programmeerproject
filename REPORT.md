@@ -62,8 +62,6 @@ The biggest challenge for this was converting the data for the barchart in the r
 }  
 I had to combine two datasets, one for the regions and one for the countries. After a few days in, I realised there was no note in neither of the files that says which country belonged to which region. So another txt file was used to get this information. So the challenge was to combine 3 different files from different length and format. This took way to much time, this resulted in a big turnover. The big turnover was as follows, the worldmap stayed, but the barchart was replaced with a linegraph and a barchart about the sectors was replacing the piechart. The data for the linegraph was much easier to get and the data for the new barchart was already there. The plans were made on a thursday, one day before the deadline of the alpha version. At this point in only had worldmap without any colours and a hoover function that barely worked. So there was a lot work to catch up with. But it was defitely the right choice, I was confident about this new plan.   
 
-This became the final plan  
-<img src="docs/overallss.png" width="500">
 
 This really made me realise how dynamic the total process of programming can be. Eventhough a proposal plan was made months before this project started, with a plan thought through. This plan changed from one day to another in something totally different. 
 
