@@ -9,7 +9,7 @@
 [Webpage](https://rutgerstorm.github.io/Programmeerproject/index.html)
 
 ### Link to productvideo
-I forgot to mention the update transitions in the webpage, they're quite nice. At minute 3:43 you can see the update transition  
+I forgot to mention the update transitions in the webpage, they're quite nice. At minute 3:43 you can see a glimp of the update transition  
 >[Product Video](https://youtu.be/5aXYrT7XFOo)
 
 ## Short Summary
